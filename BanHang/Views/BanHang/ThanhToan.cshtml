@@ -1,0 +1,88 @@
+﻿@model List<BanHang.Models.ThanhToanSanPham>
+@{
+    ViewBag.Title = "Thanh toán đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    decimal? tongTien = 0;
+    int tongSL = 0;
+    var session = (Model.EF.NhanVien)Session[BanHang.Common.CommonConstant.USER_SESSION];
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-body">
+                <div class="pull-right">
+                    @Html.ActionLink("Hủy đơn hàng", "XoaGioHang")
+                </div>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td>Mã sản phẩm</td>
+                            <td>Tên sản phẩm</td>
+                            <td class="text-center">Ảnh sản phẩm</td>
+                            <td class="text-center">Số lượng</td>
+                            <td class="text-center">Đơn giá</td>
+                            <td class="text-center">Thành tiền</td>
+                            <td class="text-center">Thao tác</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            using (Html.BeginForm("CapNhat", "BanHang", new { @maSP = item.SanPham.MaSP }))
+                            {
+                                <tr>
+                                    <td>@item.SanPham.MaSP</td>
+                                    <td>@item.SanPham.TenSP</td>
+                                    <td class="text-center">
+                                        <img src="~/Image/SanPham/@item.SanPham.HinhAnh" width="100" />
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="number" min="1" step="1" name="soLuongMoi" value="@item.SoLuong" style="width:50px" />
+                                    </td>
+                                    <td class="text-center">@String.Format("{0:0,0}", item.SanPham.GiaBan.GetValueOrDefault(0)) VNĐ</td>
+                                    <td class="text-center">@String.Format("{0:0,0}", item.SanPham.GiaBan.GetValueOrDefault(0) * item.SoLuong) VNĐ</td>
+                                    <td class="text-center">
+                                        <a class="btn bg-blue btn-sm" href="@Url.Action("Xoa", new { @maSP = item.SanPham.MaSP })">Xóa</a>
+                                        <button type="submit" class="btn bg-aqua btn-sm">Cập nhật</button>
+                                    </td>
+                                </tr>
+                            }
+                            @Html.Hidden((tongTien += item.SanPham.GiaBan * item.SoLuong).ToString());
+                            @Html.Hidden((tongSL += item.SoLuong).ToString());
+                        }
+                    </tbody>
+                    <tfoot>
+                        @using (Html.BeginForm("ThanhToan", "BanHang", FormMethod.Post))
+                        {
+                            <tr>
+                                <td colspan="5"></td>
+                                @Html.Hidden("MaNV", @session.MaNV)
+                                @Html.Hidden("TongSL", tongSL)
+                                @Html.Hidden("TongTien", tongTien)
+                                <td>Tổng số lượng sản phẩm: @tongSL</td>
+                                <td>Tổng tiền: @String.Format("{0:0,0}", tongTien) VNĐ</td>
+                            </tr>
+                            <tr>
+                                <td colspan="7">
+                                    <h4 class="pull-right"> Mã khách hàng: @Html.TextBox("MaKH")</h4>
+                                </td>
+
+                            </tr>
+                            <tr class="text-right">
+                                <td colspan="7">
+                                    <button type="submit" class="btn bg-aqua btn-lg pull-right">Thanh toán</button>
+                                </td>
+                            </tr>
+                        }
+                    </tfoot>                   
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+    <!-- /.col -->
+</div>
+
+

@@ -1,0 +1,114 @@
+﻿@model Model.EF.SanPham
+
+@{
+    ViewBag.Title = "Thêm sản phẩm mới";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1 class="page-header">
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Tác vụ</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+@using (Html.BeginForm("ThemMoi", "SanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="box">
+        <div class="box-body">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div class="col-md-12">
+                <div class="row">
+                    <br />
+                    <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.TenSP)</div>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.TenSP, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.HinhAnh)</div>
+                    <div class="col-md-10">
+                        <input type="file" name="FileAnh" required />
+                        @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.MaLoaiSP)</div>
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaLoaiSP", null, "-- Chọn loại sản phẩm --", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MaLoaiSP, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.MaNCC)</div>
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaNCC", null, "-- Chọn nhà cung cấp --", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MaNCC, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.ThuongHieu)</div>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ThuongHieu, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ThuongHieu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.GiaNhap)</div>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.GiaNhap, new { type = "number", min = "1000", step = "1000", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.GiaNhap, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.GiaBan)</div>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.GiaBan, new { type = "number", min = "1000", step = "1000", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.SoLuong)</div>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.SoLuong, new { type = "number", min = "1", step = "1", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.Mota)</div>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Mota, new { @class = "form-control", id = "txtMota" })
+                        @Html.ValidationMessageFor(model => model.Mota, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Thêm mới" class="btn bg-aqua btn-lg pull-right" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script src="~/Assets/AdminLTE-2.4.18/bower_components/ckeditor/ckeditor.js"></script>
+<script>
+    var ckeditor = CKEDITOR.replace('txtMota', {
+        customConfig: "~/Assets/AdminLTE-2.4.18/bower_components/ckeditor/config.js"
+    });
+</script>

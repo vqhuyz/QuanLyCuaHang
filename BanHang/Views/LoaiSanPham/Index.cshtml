@@ -1,0 +1,82 @@
+﻿@model PagedList.IPagedList<Model.EF.LoaiSanPham>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Danh sách phân loại";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1 class="page-header">
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Tác vụ</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div>
+                    <a href="/LoaiSanPham/ThemMoi" class="btn bg-olive btn-lg" data-toggle="modal" data-target="#modal-themMoi">
+                        Thêm Mới
+                    </a>
+                    <div class="modal fade " id="modal-themMoi">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                </div>
+                <br />
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Tên phân loại</th>
+                            <th class="text-center">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.TenLoai</td>
+                                <td  class="text-center">
+                                    <a href="/LoaiSanPham/CapNhat/@item.MaLoaiSP" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaLoaiSP">Sửa</a>
+                                    <div class="modal fade " id="modal-capNhat-@item.MaLoaiSP">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+
+                                    <a href="/LoaiSanPham/Xoa/@item.MaLoaiSP" class="btn bg-navy" data-toggle="modal" data-target="#modal-Xoa-@item.MaLoaiSP">Xóa</a>
+                                    <div class="modal fade " id="modal-Xoa-@item.MaLoaiSP">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+    <!-- /.col -->
+</div>

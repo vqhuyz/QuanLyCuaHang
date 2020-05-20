@@ -1,0 +1,86 @@
+﻿@model PagedList.IPagedList<Model.EF.HoaDon>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Danh sách hóa đơn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Bảng điều khiển</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    @using (Html.BeginForm("Index", "HoaDon", FormMethod.Get))
+                    {
+                        <div class="input-group">
+                            <input type="text" name="search" value="@ViewBag.Search" class="form-control" placeholder="Tìm kiếm theo Tên khách hàng">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    }
+                    <div class="table-responsive">
+                        <table id="tblData" class="table table-bordered table-middle tblData" method="post">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Mã số</th>
+                                    <th class="text-center">Tên khách hàng</th>
+                                    <th class="text-center">Tổng tiền</th>
+                                    <th class="text-center">Ngày đặt</th>
+                                    <th class="text-center">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Model.EF.HoaDon item in Model)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            @item.MaHD
+                                        </td>
+                                        <td class="text-center">
+                                            <b>@Html.DisplayFor(m => item.KhachHang.TenKH)</b>
+                                        </td>
+                                        <td class="text-center">
+                                            @String.Format("{0:0,0}", item.TongTien) VNĐ
+                                        </td>
+                                        <td class="text-center">
+                                            <b>@Html.DisplayFor(m => item.NgayBan)</b>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn bg-blue btn-sm" href="@Url.Action("ChiTietDonHang", new { Id = item.MaHD })">Xem</a>
+                                            <a href="/HoaDon/XoaHoaDon/@item.MaHD" class="btn bg-blue btn-sm" data-toggle="modal" data-target="#modal-Xoa-@item.MaHD"> Xóa</a>
+                                            <div class="modal fade " id="modal-Xoa-@item.MaHD">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    @Html.PagedListPager(Model, page => Url.Action("DanhSachDonHang", new { page, search = ViewBag.Search }))
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>

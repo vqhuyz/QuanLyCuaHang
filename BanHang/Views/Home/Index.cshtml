@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Thống kê";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1 class="page-header">
+    @ViewBag.Title
+</h1>
+<section class="content">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="ion ion-ios-person-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Nhân viên</span>
+                    <span class="info-box-number">@ViewBag.NhanVien</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Khách hàng</span>
+                    <span class="info-box-number">@ViewBag.KhachHang</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="ion ion-social-usd-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Doanh thu</span>
+                    <span class="info-box-number">@BanHang.Common.Format.FormatCurrencyVND(ViewBag.TongDoanhThu)</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Tổng sản phẩm</span>
+                    <span class="info-box-number">@ViewBag.SanPham</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="ion ion-social-usd-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Doanh thu ngày</span>
+                    <span class="info-box-number">@BanHang.Common.Format.FormatCurrencyVND(ViewBag.DoanhThuNgay)</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="ion ion-social-usd-outline"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Doanh thu tháng</span>
+                    <span class="info-box-number">@BanHang.Common.Format.FormatCurrencyVND(ViewBag.DoanhThuThang)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,23 @@
+﻿@model Model.EF.NhanVien
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Xoa", "NhanVien", FormMethod.Post))
+{
+    <div class="modal-header bg-navy">
+        <h4 class="modal-title">Xóa nhân viên</h4>
+    </div>
+
+    <div class="modal-body">
+        <!-- form start -->
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.MaNV)
+        <h4>Bạn có chắc muốn xoá nhân viên này?</h4>
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-lg bg-navy">Xóa</button>
+    </div>
+}

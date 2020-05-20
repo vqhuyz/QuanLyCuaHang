@@ -1,0 +1,72 @@
+﻿@model PagedList.IPagedList<Model.EF.SanPham>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Chọn sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1 class="page-header">
+        @ViewBag.Title
+    </h1>
+</section>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+
+            <!-- /.box-header -->
+            <div class="box-body">
+                @using (Html.BeginForm("Index", "BanHang", FormMethod.Get))
+                {
+                    <div class="input-group">
+                        <input type="text" name="search" value="@ViewBag.Search" class="form-control" placeholder="Tìm kiếm theo Tên sản phẩm">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                }
+                <br />
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Mã sản phẩm</th>
+                            <th>Hình ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="text-center">Số lượng còn</th>
+                            <th class="text-center">Giá bán</th>
+                            <th class="text-center">Chọn sản phẩm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>@item.MaSP</td>
+                            <td>
+                                <img src="~/Image/SanPham/@item.HinhAnh" width="100" height="auto" />
+                            </td>
+                            <td>@item.TenSP</td>
+                            <td class="text-center">@item.SoLuong</td>
+                            <td class="text-center">@String.Format("{0:0,0}", item.GiaBan) VNĐ</td>
+                            @if (item.SoLuong > 0)
+                            {
+                                <td class="text-center">
+                                    <a href="/BanHang/ThemSanPham?maSP=@item.MaSP&soLuong=1" class="btn bg-aqua">Chọn sản phẩm</a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="text-center text-red">Hết hàng</td>
+                            }
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, search = ViewBag.Search }))
+            </div>
+        </div>
+    </div>
+</div>

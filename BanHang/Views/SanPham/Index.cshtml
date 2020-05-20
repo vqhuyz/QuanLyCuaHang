@@ -1,0 +1,84 @@
+﻿@model PagedList.IPagedList<Model.EF.SanPham>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1 class="page-header">
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Tác vụ</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+
+            <!-- /.box-header -->
+            <div class="box-body">
+                @using (Html.BeginForm("Index", "SanPham", FormMethod.Get))
+                {
+                    <div class="input-group">
+                        <input type="text" name="search" value="@ViewBag.Search" class="form-control" placeholder="Tìm kiếm theo Tên sản phẩm">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                }
+                <br />
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Mã sản phẩm</th>
+                            <th>Hình ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Thương hiệu</th>
+                            <th>Số lượng</th>
+                            <th>Giá bán</th>
+                            <th class="text-center">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>@item.MaSP</td>
+                            <td>
+                                <img src="~/Image/SanPham/@item.HinhAnh" width="100" height="auto" />
+                            </td>
+                            <td>@item.TenSP</td>
+                            <td>@item.ThuongHieu</td>
+                            <td>@item.SoLuong</td>
+                            <td>@String.Format("{0:0,0}", item.GiaBan) VNĐ</td>
+                            <td class="text-center">
+                                <a href="/SanPham/ThongTin/@item.MaSP" class="btn bg-purple">Thông tin</a>
+                                <a href="/SanPham/CapNhat/@item.MaSP" class="btn bg-maroon">Sửa</a>
+                                <a href="/SanPham/Xoa/@item.MaSP" class="btn bg-navy" data-toggle="modal" data-target="#modal-Xoa"> Xóa</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, search = ViewBag.Search }))
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+    <!-- /.col -->
+</div>
+
+<div class="modal fade " id="modal-Xoa">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

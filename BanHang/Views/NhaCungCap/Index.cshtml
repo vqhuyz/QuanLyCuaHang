@@ -1,0 +1,120 @@
+﻿
+@model PagedList.IPagedList<Model.EF.NhaCungCap>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Danh sách nhà cung cấp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1 class="page-header">
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Tác vụ</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div>
+                    <a href="@Url.Action("Ds_NhaCungCap","NhaCungCap")" class=" btn btn-primary btn-lg pull-right">
+                        Xuất Excel
+                    </a>
+                    <a href="@Url.Action("ThemMoi","NhaCungCap")" class="btn bg-olive btn-lg" data-toggle="modal" data-target="#modal-themMoi">
+                        Thêm Mới
+                    </a>
+                    <div class="modal fade " id="modal-themMoi">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                </div>
+                <br />
+                @using (Html.BeginForm("Index", "NhaCungCap", FormMethod.Get))
+                {
+                    <div class="input-group">
+                        <input type="text" name="search" value="@ViewBag.Search" class="form-control" placeholder="Tìm kiếm theo Tên">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                }
+                <br />
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Mã NCC</th>
+                            <th>Tên nhà cung cấp</th>
+                            <th>Số điện thoại</th>
+                            <th>Email</th>
+                            <th class="text-center">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.MaNCC</td>
+                                <td>@item.TenNCC</td>
+                                <td>@item.SoDT</td>
+                                <td>@item.Email</td>
+                                <td class="text-center">
+                                    <a href="/NhaCungCap/ThongTin/@item.MaNCC" class="btn bg-purple" data-toggle="modal" data-target="#modal-thongTin-@item.MaNCC">Thông tin</a>
+                                    <div class="modal fade " id="modal-thongTin-@item.MaNCC">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+
+                                    <a href="/NhaCungCap/CapNhat/@item.MaNCC" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaNCC">Sửa</a>
+                                    <div class="modal fade " id="modal-capNhat-@item.MaNCC">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                    <a href="/NhaCungCap/Xoa/@item.MaNCC" class="btn bg-navy" data-toggle="modal" data-target="#modal-Xoa-@item.MaNCC">Xóa</a>
+                                    <div class="modal fade " id="modal-Xoa-@item.MaNCC">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @search = ViewBag.Search }))
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+    <!-- /.col -->
+</div>
+
+
+
+
+
+

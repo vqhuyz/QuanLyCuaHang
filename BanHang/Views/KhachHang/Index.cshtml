@@ -1,0 +1,127 @@
+﻿
+@model PagedList.IPagedList<Model.EF.KhachHang>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Danh sách khách hàng thân thiết";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1 class="page-header">
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Tác vụ</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div>
+                    <a href="@Url.Action("Ds_KhachHang","KhachHang")" class=" btn btn-primary btn-lg pull-right">
+                        Xuất Excel
+                    </a>
+                    <a href="@Url.Action("ThemMoi","KhachHang")" class="btn bg-olive btn-lg" data-toggle="modal" data-target="#modal-themMoi">
+                        Thêm Mới
+                    </a>
+                    <div class="modal fade" id="modal-themMoi">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                </div>
+                <br />
+                @using (Html.BeginForm("Index", "KhachHang", FormMethod.Get))
+                {
+                    <div class="input-group">
+                        <input type="text" name="search" value="@ViewBag.Search" class="form-control" placeholder="Tìm kiếm theo Tên hoặc Số chứng minh">
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                }
+                <br />
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Mã KH</th>
+                            <th>Tên khách hàng</th>
+                            <th>Số chứng minh</th>
+                            <th>Số điện thoại</th>
+                            <th>Ngày sinh</th>
+                            <th>Giới tính</th>
+                            <th>Email</th>
+                            <th class="text-center">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.MaKH</td>
+                                <td>@item.TenKH</td>
+                                <td>@item.SoCMND</td>
+                                <td>@item.SoDT</td>
+                                <td>@BanHang.Common.Format.FormatDate(item.NgaySinh)</td>
+                                <td>@item.GioiTinh</td>
+                                <td>@item.Email</td>
+                                <td class="text-center">
+                                    <a href="/KhachHang/ThongTin/@item.MaKH" class="btn bg-purple" data-toggle="modal" data-target="#modal-thongTin-@item.MaKH">Thông tin</a>
+                                    <div class="modal fade " id="modal-thongTin-@item.MaKH">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+
+                                    <a href="/KhachHang/CapNhat/@item.MaKH" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaKH">Sửa</a>
+                                    <div class="modal fade " id="modal-capNhat-@item.MaKH">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+
+                                    <a href="/KhachHang/Xoa/@item.MaKH" class="btn bg-navy" data-toggle="modal" data-target="#modal-Xoa-@item.MaKH">Xóa</a>
+                                    <div class="modal fade " id="modal-Xoa-@item.MaKH">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, search = ViewBag.Search }))
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+    <!-- /.col -->
+</div>
+
+
+
+
+
+
+

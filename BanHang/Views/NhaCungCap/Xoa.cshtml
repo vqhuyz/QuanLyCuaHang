@@ -1,0 +1,24 @@
+﻿@model Model.EF.NhaCungCap
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Xoa", "NhaCungCap", FormMethod.Post))
+{
+    <div class="modal-header bg-navy">
+        <h4 class="modal-title">Xóa nhà cung cấp</h4>
+    </div>
+
+    <div class="modal-body">
+        <!-- form start -->
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.MaNCC)
+        <h4>Bạn có chắc muốn xoá nhà cung cấp này?</h4>
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-lg bg-navy">Xóa</button>
+    </div>
+}
+

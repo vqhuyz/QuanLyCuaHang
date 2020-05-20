@@ -1,0 +1,119 @@
+﻿@model Model.EF.KhachHang
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("ThemMoi", "KhachHang", FormMethod.Post))
+{
+    <div class="modal-header bg-olive">
+        <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Thêm khách hàng</h4>
+    </div>
+
+    <div class="modal-body form-horizontal">
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenKH, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TenKH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoCMND, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.SoCMND, new { @class = "form-control", @type = "number" })
+                @Html.ValidationMessageFor(model => model.SoCMND, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgaySinh, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                <div class=" input-group date" id="datetimepicker1">
+                    @Html.TextBoxFor(model => model.NgaySinh, new { @class = "form-control" })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                <label class="radio-inline">
+                    @Html.RadioButtonFor(model => model.GioiTinh, "Nam")
+                    Nam
+                </label>
+                <label class="radio-inline">
+                    @Html.RadioButtonFor(model => model.GioiTinh, "Nữ")
+                    Nữ
+                </label>
+                <label class="radio-inline">
+                    @Html.RadioButtonFor(model => model.GioiTinh, "Khác")
+                    Khác
+                </label>
+                @Html.ValidationMessageFor(model => model.GioiTinh, "")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoDT, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.SoDT, new { @class = "form-control", @type = "number" })
+                @Html.ValidationMessageFor(model => model.SoDT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Facebook, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Facebook, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Facebook, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control", rows = "5", cols = "20" })
+                @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn bg-olive btn-lg">Thêm Mới</button>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+</script>

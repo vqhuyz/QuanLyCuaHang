@@ -1,0 +1,35 @@
+﻿@model Model.EF.LoaiSanPham
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("CapNhat", "LoaiSanPham", FormMethod.Post))
+{
+    <div class="modal-header bg-maroon">
+        <h4 class="modal-title">Cập nhật</h4>
+    </div>
+
+    <div class="modal-body form-horizontal">
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.MaLoaiSP)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenLoai, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.TenLoai, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TenLoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="clearfix text-right">
+                <button type="submit" class="btn bg-maroon btn-lg">Cập nhật</button>
+                @Html.ActionLink("Đóng", "Index", null, new { @class = "btn btn-default btn-lg", onclick = "return confirm('Các thay đổi sẽ không được cập nhật. Bạn vẫn muốn trở về danh sách?');" })
+            </div>
+        </div>
+    </div>
+}
+

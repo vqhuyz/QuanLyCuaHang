@@ -1,0 +1,42 @@
+﻿@model Model.EF.NhaCungCap
+
+@{
+    Layout = null;
+}
+
+<div class="modal-header bg-purple">
+    <h4 class="modal-title">Thông tin nhà cung cấp</h4>
+</div>
+
+<div class="modal-body dl-horizontal">
+    <table class="table table-striped table-bordered ">
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.TenNCC)</td>
+            <td align="left">@Html.DisplayFor(model => model.TenNCC)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.SoDT)</td>
+            <td align="left">@Html.DisplayFor(model => model.SoDT)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.DiaChi)</td>
+            <td align="left">@Html.DisplayFor(model => model.DiaChi)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Email)</td>
+            <td align="left">@Html.DisplayFor(model => model.Email)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.MaThue)</td>
+            <td align="left">@Html.DisplayFor(model => model.MaThue)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.GhiChu)</td>
+            <td align="left">@Html.DisplayFor(model => model.GhiChu)</td>
+        </tr>
+    </table>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Đóng</button>
+</div>

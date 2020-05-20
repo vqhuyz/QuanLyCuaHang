@@ -1,0 +1,23 @@
+﻿@model Model.EF.SanPham
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Xoa", "SanPham", FormMethod.Post))
+{
+    <div class="modal-header bg-navy">
+        <h4 class="modal-title">Xóa sản phẩm</h4>
+    </div>
+
+    <div class="modal-body">
+        <!-- form start -->
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.MaSP)
+        <h4>Bạn có chắc muốn xoá sản phẩm này?</h4>
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-lg bg-navy">Xóa</button>
+    </div>
+}

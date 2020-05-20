@@ -1,0 +1,106 @@
+﻿@model Model.EF.SanPham
+
+@{
+    ViewBag.Title = "Thông tin sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1 class="page-header">
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Tác vụ</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <div class="col-md-3 text-center">
+                        <p>
+                            <img style="margin-top:0px" src="~/Image/SanPham/@Model.HinhAnh" width="200" height="180" />
+                        </p>
+                        <h4>
+                            @Html.DisplayFor(m => m.TenSP)
+                        </h4>
+                    </div>
+                    <div class="col-md-4">
+                        <table class="table table-striped table-bordered">
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.TenSP)</td>
+                                <td>@Html.DisplayFor(model => model.TenSP)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.MaLoaiSP)</td>
+                                <td>@Html.DisplayFor(model => model.LoaiSanPham.TenLoai)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.MaNCC)</td>
+                                <td>@Html.DisplayFor(model => model.NhaCungCap.TenNCC)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.SoLuong)</td>
+                                <td>@Html.DisplayFor(model => model.SoLuong)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.NgayThem)</td>
+                                <td>@Html.DisplayFor(model => model.NgayThem)</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-4">
+                        <table class="table table-striped table-bordered">
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.GiaNhap)</td>
+                                <td>@String.Format("{0:0,0}", Model.GiaNhap) VNĐ</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.GiaBan)</td>
+                                <td>@String.Format("{0:0,0}", Model.GiaBan) VNĐ</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.ThuongHieu)</td>
+                                <td>@Html.DisplayFor(model => model.ThuongHieu)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Mota)</td>
+                                <td>
+                                    <a href="#noiDung" data-toggle="modal">Xem nội dung</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.NgayCapNhat)</td>
+                                <td>@Html.DisplayFor(model => model.NgayCapNhat)</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="text-right">                        
+                        @Html.ActionLink("Về danh sách", "Index", null, new { @class = "btn bg-navy btn-lg" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="noiDung">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-blue">
+                    <h4 class="modal-title">Mô tả</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box-body" style="height:400px">
+                            @Html.Raw(Model.Mota)
+                    </div>
+                </div>
+                <div class="modal-footer text-right">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>

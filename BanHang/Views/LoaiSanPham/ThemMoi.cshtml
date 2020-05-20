@@ -1,0 +1,35 @@
+﻿@model Model.EF.LoaiSanPham
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("ThemMoi", "LoaiSanPham", FormMethod.Post))
+{
+    <div class="modal-header bg-olive">
+        <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Thêm phân loại sản phẩm</h4>
+    </div>
+
+    <div class="modal-body form-horizontal">
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenLoai, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.TenLoai, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TenLoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn bg-olive btn-lg">Thêm Mới</button>
+            </div>
+        </div>
+    </div>
+}
+
