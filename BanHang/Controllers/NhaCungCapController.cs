@@ -52,6 +52,7 @@ namespace BanHang.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ThemMoi(NhaCungCap nhaCungCap)
         {
             if (ModelState.IsValid)
@@ -71,6 +72,7 @@ namespace BanHang.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CapNhat(NhaCungCap nhaCungCap)
         {
             if (ModelState.IsValid)
@@ -91,6 +93,7 @@ namespace BanHang.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Xoa(NhaCungCap nhaCungCap)
         {
             var dao = new NCCDAO();

@@ -19,7 +19,7 @@ namespace BanHang.Controllers
             return View();
         }
 
-
+        [ValidateAntiForgeryToken]
         public ActionResult Login(DangNhapModel model)
         {
             NhanVien userSession = new NhanVien();

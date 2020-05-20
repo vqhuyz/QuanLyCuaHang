@@ -52,6 +52,7 @@ namespace BanHang.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ThemMoi(KhachHang khachHang)
         {
             if (ModelState.IsValid)
@@ -90,6 +91,7 @@ namespace BanHang.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CapNhat(KhachHang khachHang)
         {
             if (ModelState.IsValid)
@@ -126,6 +128,7 @@ namespace BanHang.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Xoa(KhachHang khachHang)
         {
             var dao = new KhachHangDAO();

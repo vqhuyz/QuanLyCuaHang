@@ -42,6 +42,7 @@ namespace BanHang.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ThemMoi(LoaiSanPham loaiSP)
         {
             if (ModelState.IsValid)
@@ -61,6 +62,7 @@ namespace BanHang.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CapNhat(LoaiSanPham loaiSP)
         {
             if (ModelState.IsValid)
@@ -81,6 +83,7 @@ namespace BanHang.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Xoa(LoaiSanPham loaiSP)
         {
             var dao = new LoaiSanPhamDAO();

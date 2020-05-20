@@ -53,6 +53,7 @@ namespace BanHang.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ThemMoi(NhanVien nhanVien, HttpPostedFileBase FileAnh)
         {
             if (ModelState.IsValid)
@@ -81,6 +82,7 @@ namespace BanHang.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CapNhat(NhanVien nhanVien)
         {
             if (ModelState.IsValid)
@@ -100,6 +102,7 @@ namespace BanHang.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Xoa(NhanVien nhanVien)
         {
             var dao = new NhanVienDAO();

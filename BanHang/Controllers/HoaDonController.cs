@@ -37,6 +37,7 @@ namespace BanHang.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult XoaHoaDon(HoaDon hoaDon)
         {
             var dao = new HoaDonDAO();

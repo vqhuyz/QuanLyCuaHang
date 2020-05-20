@@ -17,6 +17,7 @@ namespace BanHang.Controllers
             return View(nv);
         }
 
+        [ValidateAntiForgeryToken]
         public ActionResult ProfileUpdate(NhanVien nhanVien)
         {
             if (ModelState.IsValid)
@@ -39,6 +40,7 @@ namespace BanHang.Controllers
             return View("Index");
         }
 
+        [ValidateAntiForgeryToken]
         public ActionResult ThayDoiMatKhau(NhanVien model, FormCollection collection)
         {
             if (ModelState.IsValid)
