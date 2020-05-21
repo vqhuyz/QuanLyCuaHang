@@ -26,7 +26,7 @@
                     <a href="@Url.Action("Ds_KhachHang","KhachHang")" class=" btn btn-primary btn-lg pull-right">
                         Xuất Excel
                     </a>
-                    <a href="@Url.Action("ThemMoi","KhachHang")" class="btn bg-olive btn-lg" data-toggle="modal" data-target="#modal-themMoi">
+                    <a href="@Url.Action("ThemMoi","KhachHang")" class="btn bg-olive btn-lg" data-toggle="modal" data-target="#modal-themMoi" data-backdrop="static" data-keyboard="false">
                         Thêm Mới
                     </a>
                     <div class="modal fade" id="modal-themMoi">
@@ -76,7 +76,7 @@
                                 <td>@item.GioiTinh</td>
                                 <td>@item.Email</td>
                                 <td class="text-center">
-                                    <a href="/KhachHang/ThongTin/@item.MaKH" class="btn bg-purple" data-toggle="modal" data-target="#modal-thongTin-@item.MaKH">Thông tin</a>
+                                    <a href="/KhachHang/ThongTin/@item.MaKH" class="btn bg-purple" data-toggle="modal" data-target="#modal-thongTin-@item.MaKH" data-backdrop="static" data-keyboard="false">Thông tin</a>
                                     <div class="modal fade " id="modal-thongTin-@item.MaKH">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -86,7 +86,7 @@
                                         <!-- /.modal-dialog -->
                                     </div>
 
-                                    <a href="/KhachHang/CapNhat/@item.MaKH" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaKH">Sửa</a>
+                                    <a href="/KhachHang/CapNhat/@item.MaKH" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaKH" data-backdrop="static" data-keyboard="false">Sửa</a>
                                     <div class="modal fade " id="modal-capNhat-@item.MaKH">
                                         <div class="modal-dialog">
                                             <div class="modal-content">

@@ -27,7 +27,7 @@
                     <a href="@Url.Action("Ds_NhaCungCap","NhaCungCap")" class=" btn btn-primary btn-lg pull-right">
                         Xuất Excel
                     </a>
-                    <a href="@Url.Action("ThemMoi","NhaCungCap")" class="btn bg-olive btn-lg" data-toggle="modal" data-target="#modal-themMoi">
+                    <a href="@Url.Action("ThemMoi","NhaCungCap")" class="btn bg-olive btn-lg" data-toggle="modal" data-target="#modal-themMoi" data-backdrop="static" data-keyboard="false">
                         Thêm Mới
                     </a>
                     <div class="modal fade " id="modal-themMoi">
@@ -71,7 +71,7 @@
                                 <td>@item.SoDT</td>
                                 <td>@item.Email</td>
                                 <td class="text-center">
-                                    <a href="/NhaCungCap/ThongTin/@item.MaNCC" class="btn bg-purple" data-toggle="modal" data-target="#modal-thongTin-@item.MaNCC">Thông tin</a>
+                                    <a href="/NhaCungCap/ThongTin/@item.MaNCC" class="btn bg-purple" data-toggle="modal" data-target="#modal-thongTin-@item.MaNCC" data-backdrop="static" data-keyboard="false">Thông tin</a>
                                     <div class="modal fade " id="modal-thongTin-@item.MaNCC">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -81,7 +81,7 @@
                                         <!-- /.modal-dialog -->
                                     </div>
 
-                                    <a href="/NhaCungCap/CapNhat/@item.MaNCC" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaNCC">Sửa</a>
+                                    <a href="/NhaCungCap/CapNhat/@item.MaNCC" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaNCC" data-backdrop="static" data-keyboard="false">Sửa</a>
                                     <div class="modal fade " id="modal-capNhat-@item.MaNCC">
                                         <div class="modal-dialog">
                                             <div class="modal-content">

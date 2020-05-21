@@ -23,7 +23,7 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <div>
-                    <a href="/LoaiSanPham/ThemMoi" class="btn bg-olive btn-lg" data-toggle="modal" data-target="#modal-themMoi">
+                    <a href="/LoaiSanPham/ThemMoi" class="btn bg-olive btn-lg" data-toggle="modal" data-target="#modal-themMoi" data-backdrop="static" data-keyboard="false">
                         Thêm Mới
                     </a>
                     <div class="modal fade " id="modal-themMoi">
@@ -49,7 +49,7 @@
                             <tr>
                                 <td>@item.TenLoai</td>
                                 <td  class="text-center">
-                                    <a href="/LoaiSanPham/CapNhat/@item.MaLoaiSP" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaLoaiSP">Sửa</a>
+                                    <a href="/LoaiSanPham/CapNhat/@item.MaLoaiSP" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaLoaiSP" data-backdrop="static" data-keyboard="false">Sửa</a>
                                     <div class="modal fade " id="modal-capNhat-@item.MaLoaiSP">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
