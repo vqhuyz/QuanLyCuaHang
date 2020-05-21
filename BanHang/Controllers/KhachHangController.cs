@@ -87,6 +87,10 @@ namespace BanHang.Controllers
                     ModelState.AddModelError("", "Thêm khách hàng thất bại");
                 }
             }
+            else
+            {
+                return View();
+            }
             return View("Index");
         }
 

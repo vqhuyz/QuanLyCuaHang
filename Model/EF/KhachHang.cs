@@ -19,6 +19,7 @@
         public long MaKH { get; set; }
 
         [StringLength(50)]
+        [Required(ErrorMessage ="Nhap ten khach hang")]
         [Display(Name = "Tên khách hàng")]
         public string TenKH { get; set; }
 
