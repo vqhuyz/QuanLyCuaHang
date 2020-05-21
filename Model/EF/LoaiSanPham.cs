@@ -19,6 +19,7 @@
         public long MaLoaiSP { get; set; }
 
         [Display(Name = "Tên phân loại")]
+        [Required]
         public string TenLoai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

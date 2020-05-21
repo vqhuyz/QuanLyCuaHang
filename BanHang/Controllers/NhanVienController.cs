@@ -27,21 +27,21 @@ namespace BanHang.Controllers
         [HttpGet]
         public ActionResult ThemMoi()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpGet]
         public ActionResult CapNhat(long id)
         {
             var nhanVien = new NhanVienDAO().ViewDetail(id);
-            return View(nhanVien);
+            return PartialView(nhanVien);
         }
 
         [HttpGet]
         public ActionResult Xoa(long id)
         {
             var nhanVien = new NhanVienDAO().ViewDetail(id);
-            return View(nhanVien);
+            return PartialView(nhanVien);
         }
 
         [HttpGet]
@@ -54,7 +54,7 @@ namespace BanHang.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ThemMoi(NhanVien nhanVien, HttpPostedFileBase FileAnh)
+        public JsonResult ThemMoi(NhanVien nhanVien, HttpPostedFileBase FileAnh)
         {
             if (ModelState.IsValid)
             {
@@ -75,10 +75,10 @@ namespace BanHang.Controllers
 
                     db.NhanViens.Add(nhanVien);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return Json(new { status = 1, message = "Thêm mới thành công" });
                 }
             }
-            return View("Index");
+            return Json(new { status = 0, message = "Hãy nhập đầy đủ thông tin" });
         }
 
         [HttpPost]
@@ -92,10 +92,6 @@ namespace BanHang.Controllers
                 if (id)
                 {
                     return RedirectToAction("Index");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Cập nhật thất bại");
                 }
             }
             return View("Index");

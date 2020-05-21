@@ -4,7 +4,7 @@
     Layout = null;
 }
 
-@using (Html.BeginForm("ThemMoi", "LoaiSanPham", FormMethod.Post))
+@using (Html.BeginForm("ThemMoi", "LoaiSanPham", FormMethod.Post, new { name = "themMoi"}))
 {
     <div class="modal-header bg-olive">
         <button type="button" class="close" data-dismiss="modal">

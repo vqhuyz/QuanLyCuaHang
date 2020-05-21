@@ -24,26 +24,26 @@ namespace BanHang.Controllers
         [HttpGet]
         public ActionResult ThemMoi()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpGet]
         public ActionResult CapNhat(long id)
         {
             var loaiSP = new LoaiSanPhamDAO().ViewDetail(id);
-            return View(loaiSP);
+            return PartialView(loaiSP);
         }
 
         [HttpGet]
         public ActionResult Xoa(long id)
         {
             var loaiSP = new LoaiSanPhamDAO().ViewDetail(id);
-            return View(loaiSP);
+            return PartialView(loaiSP);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ThemMoi(LoaiSanPham loaiSP)
+        public JsonResult ThemMoi(LoaiSanPham loaiSP)
         {
             if (ModelState.IsValid)
             {
@@ -51,14 +51,10 @@ namespace BanHang.Controllers
                 long id = dao.Insert(loaiSP);
                 if (id > 0)
                 {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Thêm loại sản phẩm thất bại");
+                    return Json(new { status = 1, message = "Thêm mới thành công" });
                 }
             }
-            return View("Index");
+            return Json(new { status = 0, message = "Vui lòng nhập tên phân loại" });
         }
 
         [HttpPost]
@@ -72,10 +68,6 @@ namespace BanHang.Controllers
                 if (id)
                 {
                     return RedirectToAction("Index");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Cập nhật thất bại");
                 }
             }
             return View("Index");

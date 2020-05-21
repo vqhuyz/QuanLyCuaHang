@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.HinhAnh)</div>
                     <div class="col-md-10">
-                        <input type="file" name="FileAnh" required />
+                        <input type="file" name="FileAnh" />
                         @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
                     </div>
                 </div>

@@ -27,33 +27,33 @@ namespace BanHang.Controllers
         [HttpGet]
         public ActionResult ThemMoi()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpGet]
         public ActionResult CapNhat(long id)
         {
             var nhaCungCap = new NCCDAO().ViewDetail(id);
-            return View(nhaCungCap);
+            return PartialView(nhaCungCap);
         }
 
         [HttpGet]
         public ActionResult Xoa(long id)
         {
             var nhaCungCap = new NCCDAO().ViewDetail(id);
-            return View(nhaCungCap);
+            return PartialView(nhaCungCap);
         }
 
         [HttpGet]
         public ActionResult ThongTin(long id)
         {
             var nhaCungCap = new NCCDAO().ViewDetail(id);
-            return View(nhaCungCap);
+            return PartialView(nhaCungCap);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ThemMoi(NhaCungCap nhaCungCap)
+        public JsonResult ThemMoi(NhaCungCap nhaCungCap)
         {
             if (ModelState.IsValid)
             {
@@ -61,14 +61,10 @@ namespace BanHang.Controllers
                 long id = dao.Insert(nhaCungCap);
                 if (id > 0)
                 {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Thêm nhà cung cấp thất bại");
+                    return Json(new { status = 1, message = "Thêm mới thành công" });
                 }
             }
-            return View("Index");
+            return Json(new { status = 0, message = "Hãy nhập đầy đủ thông tin" });
         }
 
         [HttpPost]
@@ -82,10 +78,6 @@ namespace BanHang.Controllers
                 if (id)
                 {
                     return RedirectToAction("Index");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Cập nhật thất bại");
                 }
             }
             return View("Index");

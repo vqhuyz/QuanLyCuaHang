@@ -19,7 +19,7 @@
         public long MaKH { get; set; }
 
         [StringLength(50)]
-        [Required(ErrorMessage ="Nhap ten khach hang")]
+        [Required]
         [Display(Name = "Tên khách hàng")]
         public string TenKH { get; set; }
 
@@ -28,18 +28,22 @@
         public string SoCMND { get; set; }
 
         [StringLength(10)]
+        [Required]
         [Display(Name = "Số điện thoại")]
         public string SoDT { get; set; }
 
         [Column(TypeName = "date")]
         [Display(Name = "Ngày sinh")]
+        [Required]
         public DateTime NgaySinh { get; set; }
 
         [StringLength(200)]
         [Display(Name = "Địa chỉ")]
+        [Required]
         public string DiaChi { get; set; }
 
         [StringLength(10)]
+        [Required]
         [Display(Name = "Giới tính")]
         public string GioiTinh { get; set; }
 

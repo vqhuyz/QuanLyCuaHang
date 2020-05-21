@@ -6,6 +6,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section scripts{
+    <script>
+$(function () {
+            $(document).on("submit", "form[name=themMoi]", function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: $(this).attr("action"),
+                    method: "Post",
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        if (result.status == 1) {
+                            alert(result.message);
+                            window.location.reload();
+                        }
+                        else {
+                            alert(result.message);
+                        }
+                    },
+                });
+            });
+        });</script>
+}
+
 <section class="content-header">
     <h1 class="page-header">
         @ViewBag.Title
@@ -48,7 +71,7 @@
                         {
                             <tr>
                                 <td>@item.TenLoai</td>
-                                <td  class="text-center">
+                                <td class="text-center">
                                     <a href="/LoaiSanPham/CapNhat/@item.MaLoaiSP" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaLoaiSP" data-backdrop="static" data-keyboard="false">Sửa</a>
                                     <div class="modal fade " id="modal-capNhat-@item.MaLoaiSP">
                                         <div class="modal-dialog">

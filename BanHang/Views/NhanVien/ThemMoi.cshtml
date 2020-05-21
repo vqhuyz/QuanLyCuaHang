@@ -5,7 +5,7 @@
 }
 
 
-@using (Html.BeginForm("ThemMoi", "NhanVien", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("ThemMoi", "NhanVien", FormMethod.Post, new { enctype = "multipart/form-data", name = "themMoi" }))
 {
 
     <div class="modal-header bg-olive">
@@ -26,7 +26,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
-                            <input type="file" name="FileAnh" required />
+                            <input type="file" name="FileAnh" />
                             @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.MucLuong, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
-                            @Html.TextBoxFor(model => model.MucLuong, new { @class = "form-control", @type = "number", step = "100000" })
+                            @Html.TextBoxFor(model => model.MucLuong, new { @class = "form-control", @type = "number" })
                             @Html.ValidationMessageFor(model => model.MucLuong, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -157,7 +157,6 @@
                         @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
                             @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control", rows = "5", cols = "20" })
-                            @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>

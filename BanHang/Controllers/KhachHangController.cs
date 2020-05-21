@@ -27,33 +27,33 @@ namespace BanHang.Controllers
         [HttpGet]
         public ActionResult ThemMoi()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpGet]
         public ActionResult CapNhat(long id)
         {
             var khachHang = new KhachHangDAO().ViewDetail(id);
-            return View(khachHang);
+            return PartialView(khachHang);
         }
 
         [HttpGet]
         public ActionResult Xoa(long id)
         {
             var khachHang = new KhachHangDAO().ViewDetail(id);
-            return View(khachHang);
+            return PartialView(khachHang);
         }
 
         [HttpGet]
         public ActionResult ThongTin(long id)
         {
             var khachHang = new KhachHangDAO().ViewDetail(id);
-            return View(khachHang);
+            return PartialView(khachHang);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ThemMoi(KhachHang khachHang)
+        public JsonResult ThemMoi(KhachHang khachHang)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace BanHang.Controllers
                 {
                     if (khachHang.Email == null)
                     {
-                        return RedirectToAction("Index");
+                        return Json(new { status = 1, message = "Thêm mới thành công" });
                     }
                     else
                     {
@@ -71,7 +71,6 @@ namespace BanHang.Controllers
 
                         content = content.Replace("{{MaKH}}", khachHang.MaKH.ToString());
                         content = content.Replace("{{TenKH}}", khachHang.TenKH.ToString());
-                        content = content.Replace("{{SoCMND}}", khachHang.SoCMND.ToString());
                         content = content.Replace("{{NgaySinh}}", Common.Format.FormatDate(khachHang.NgaySinh));
                         content = content.Replace("{{SoDT}}", khachHang.SoDT.ToString());
                         content = content.Replace("{{Facebook}}", khachHang.Facebook.ToString());
@@ -79,19 +78,11 @@ namespace BanHang.Controllers
                         content = content.Replace("{{NgayDK}}", khachHang.NgayDangKi.ToString());
 
                         new SendMail().Mail(khachHang.Email, "Đăng kí khách hàng thân thiết thành công", content);
-                        return RedirectToAction("Index");
+                        return Json(new { status = 1, message = "Thêm mới thành công" });
                     }
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Thêm khách hàng thất bại");
-                }
             }
-            else
-            {
-                return View();
-            }
-            return View("Index");
+            return Json(new { status = 0, message = "Vui lòng nhập đầy đủ thông tin" });
         }
 
         [HttpPost]
@@ -114,6 +105,7 @@ namespace BanHang.Controllers
 
                         content = content.Replace("{{MaKH}}", khachHang.MaKH.ToString());
                         content = content.Replace("{{TenKH}}", khachHang.TenKH.ToString());
+                        content = content.Replace("{{SoCMND}}", khachHang.SoCMND.ToString());
                         content = content.Replace("{{Email}}", khachHang.Email.ToString());
                         content = content.Replace("{{Facebook}}", khachHang.Facebook.ToString());
                         content = content.Replace("{{SoDT}}", khachHang.SoDT.ToString());
@@ -122,10 +114,6 @@ namespace BanHang.Controllers
                         new SendMail().Mail(khachHang.Email, "Thay đổi thông tin thành công", content);
                         return RedirectToAction("Index");
                     }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Cập nhật thất bại");
                 }
             }
             return View("Index");
