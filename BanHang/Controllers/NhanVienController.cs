@@ -54,7 +54,7 @@ namespace BanHang.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult ThemMoi(NhanVien nhanVien, HttpPostedFileBase FileAnh)
+        public ActionResult ThemMoi(NhanVien nhanVien, HttpPostedFileBase FileAnh)
         {
             if (ModelState.IsValid)
             {
@@ -75,10 +75,12 @@ namespace BanHang.Controllers
 
                     db.NhanViens.Add(nhanVien);
                     db.SaveChanges();
-                    return Json(new { status = 1, message = "Thêm mới thành công" });
+                    return RedirectToAction("Index");
+                    //return Json(new { status = 1, message = "Thêm mới thành công" });
                 }
             }
-            return Json(new { status = 0, message = "Hãy nhập đầy đủ thông tin" });
+            return View();
+            //return Json(new { status = 0, message = "Hãy nhập đầy đủ thông tin" });
         }
 
         [HttpPost]

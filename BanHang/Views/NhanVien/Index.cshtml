@@ -8,8 +8,19 @@
 }
 
 @section scripts{
-    <script>
-$(function () {
+    @*<script>
+
+        $(document).ready(function () {
+            if ($(this).attr('enctype') == "multipart/form-data") {
+                ajaxconfig["contenttype"] = false;
+                ajaxconfig["processdata"] = false;
+            }
+            $.ajax(ajaxconfig);
+            return false;
+        });
+    </script>*@
+    @*<script>
+        $(function () {
             $(document).on("submit", "form[name=themMoi]", function (e) {
                 e.preventDefault();
                 $.ajax({
@@ -27,7 +38,8 @@ $(function () {
                     },
                 });
             });
-        });</script>
+        });
+    </script>*@
 }
 
 <section class="content-header">
