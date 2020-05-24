@@ -19,25 +19,20 @@
         public long MaNCC { get; set; }
 
         [StringLength(200)]
-        [Required]
         [Display(Name = "Tên nhà cung cấp")]
         public string TenNCC { get; set; }
 
         [StringLength(10)]
-        [Required]
         [Display(Name = "Số điện thoại")]
         public string SoDT { get; set; }
 
         [Display(Name = "Địa chỉ")]
-        [Required]
         public string DiaChi { get; set; }
 
         [StringLength(200)]
-        [Required]
         public string Email { get; set; }
 
         [StringLength(10)]
-        [Required]
         [Display(Name = "Mã số thuế")]
         public string MaThue { get; set; }
 

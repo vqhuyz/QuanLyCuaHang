@@ -19,71 +19,62 @@
     <div class="box">
         <div class="box-body">
             @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true)
 
             <div class="col-md-12">
                 <div class="row">
                     <br />
                     <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.TenSP)</div>
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.TenSP, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.TenSP, new { @class = "form-control", required = "required" })
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.HinhAnh)</div>
                     <div class="col-md-10">
-                        <input type="file" name="FileAnh" />
-                        @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+                        <input type="file" name="FileAnh" required />
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.MaLoaiSP)</div>
                     <div class="col-md-10">
-                        @Html.DropDownList("MaLoaiSP", null, "-- Chọn loại sản phẩm --", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.MaLoaiSP, "", new { @class = "text-danger" })
+                        @Html.DropDownList("MaLoaiSP", null, "-- Chọn loại sản phẩm --", htmlAttributes: new { @class = "form-control", required = "required" })
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.MaNCC)</div>
                     <div class="col-md-10">
-                        @Html.DropDownList("MaNCC", null, "-- Chọn nhà cung cấp --", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.MaNCC, "", new { @class = "text-danger" })
+                        @Html.DropDownList("MaNCC", null, "-- Chọn nhà cung cấp --", htmlAttributes: new { @class = "form-control", required = "required" })
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.ThuongHieu)</div>
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.ThuongHieu, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ThuongHieu, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.ThuongHieu, new { @class = "form-control", required = "required" })
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.GiaNhap)</div>
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.GiaNhap, new { type = "number", min = "1000", step = "1000", @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.GiaNhap, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.GiaNhap, new { @class = "form-control", type = "number", required = "required" })
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.GiaBan)</div>
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.GiaBan, new { type = "number", min = "1000", step = "1000", @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.GiaBan, new { @class = "form-control", type = "number", required = "required" })
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.SoLuong)</div>
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.SoLuong, new { type = "number", min = "1", step = "1", @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.SoLuong, new { @class = "form-control", type = "number", min = "1", step = "1", required = "required" })
                     </div>
                 </div>
                 <br />
@@ -91,7 +82,6 @@
                     <div class="col-md-2 text-right">@Html.DisplayNameFor(model => model.Mota)</div>
                     <div class="col-md-10">
                         @Html.TextAreaFor(model => model.Mota, new { @class = "form-control", id = "txtMota" })
-                        @Html.ValidationMessageFor(model => model.Mota, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <br />

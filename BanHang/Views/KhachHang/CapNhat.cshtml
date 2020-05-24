@@ -13,54 +13,47 @@
     <div class="modal-body form-horizontal">
 
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.MaKH)
 
         <div class="form-group">
             @Html.LabelFor(model => model.TenKH, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-6">
-                @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control", @readonly = "readonly" })
-                @Html.ValidationMessageFor(model => model.TenKH, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.TenKH, new { @class = "form-control", @readonly = "readonly", required = "required" })               
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.SoDT, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-6">
-                @Html.TextBoxFor(model => model.SoDT, new { @class = "form-control", @type = "number" })
-                @Html.ValidationMessageFor(model => model.SoDT, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.SoDT, new { @class = "form-control", type = "number", required = "required" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-6">
-                @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control", required = "required" })         
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-6">
-                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", type = "email", required = "required" })              
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Facebook, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-6">
-                @Html.TextBoxFor(model => model.Facebook, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Facebook, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.Facebook, new { @class = "form-control" })               
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-6">
-                @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control", rows = "5", cols = "20" })
-                @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control", rows = "5", cols = "20" })         
             </div>
         </div>
 

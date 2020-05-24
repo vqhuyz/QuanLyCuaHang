@@ -56,45 +56,38 @@ namespace BanHang.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ThemMoi(NhanVien nhanVien, HttpPostedFileBase FileAnh)
         {
-            if (ModelState.IsValid)
-            {
-                OnlineShopDbContext db = new OnlineShopDbContext();
-                string path = "";
-                if (FileAnh != null && FileAnh.ContentLength > 0)
-                {
-                    string extension = Path.GetExtension(FileAnh.FileName);
-                    if (extension.Equals(".jpg") || extension.Equals(".png") || extension.Equals(".jpeg"))
-                    {
-                        path = Path.Combine(Server.MapPath("~/Image/NhanVien/"), FileAnh.FileName);
-                        FileAnh.SaveAs(path);
-                    }
-                    nhanVien.HinhAnh = FileAnh.FileName;
-                    nhanVien.NgayThamGia = DateTime.Now;
-                    var encryptedMd5Pas = Encryptor.MD5Hash(nhanVien.MatKhau);
-                    nhanVien.MatKhau = encryptedMd5Pas;
 
-                    db.NhanViens.Add(nhanVien);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                    //return Json(new { status = 1, message = "Thêm mới thành công" });
+            OnlineShopDbContext db = new OnlineShopDbContext();
+            string path = "";
+            if (FileAnh != null && FileAnh.ContentLength > 0)
+            {
+                string extension = Path.GetExtension(FileAnh.FileName);
+                if (extension.Equals(".jpg") || extension.Equals(".png") || extension.Equals(".jpeg"))
+                {
+                    path = Path.Combine(Server.MapPath("~/Image/NhanVien/"), FileAnh.FileName);
+                    FileAnh.SaveAs(path);
                 }
+                nhanVien.HinhAnh = FileAnh.FileName;
+                nhanVien.NgayThamGia = DateTime.Now;
+                var encryptedMd5Pas = Encryptor.MD5Hash(nhanVien.MatKhau);
+                nhanVien.MatKhau = encryptedMd5Pas;
+
+                db.NhanViens.Add(nhanVien);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            return View();
-            //return Json(new { status = 0, message = "Hãy nhập đầy đủ thông tin" });
+            return View("Index");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CapNhat(NhanVien nhanVien)
         {
-            if (ModelState.IsValid)
+            var dao = new NhanVienDAO();
+            var id = dao.Update(nhanVien);
+            if (id)
             {
-                var dao = new NhanVienDAO();
-                var id = dao.Update(nhanVien);
-                if (id)
-                {
-                    return RedirectToAction("Index");
-                }
+                return RedirectToAction("Index");
             }
             return View("Index");
         }

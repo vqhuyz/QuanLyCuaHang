@@ -83,6 +83,9 @@
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Drawing.Common.4.5.1\lib\net461\System.Drawing.Common.dll</HintPath>
     </Reference>
@@ -8861,6 +8864,10 @@
     <Content Include="Image\NhanVien\47181249_2273143379637532_854010262049521664_o.jpg" />
     <Content Include="Image\NhanVien\93713253_3365930050087110_3015774581819441152_n.jpg" />
     <Content Include="Image\SanPham\nuoc-rua-tay-lifebuoy-cham-soc-da-huong-sua-tu-nhien-chai-493ml-0911201814506.jpg" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -8953,6 +8960,7 @@
     <Content Include="Assets\BanHang_Layout\fontawesome\webfonts\fa-solid-900.ttf" />
     <Content Include="Assets\BanHang_Layout\fontawesome\webfonts\fa-solid-900.woff" />
     <Content Include="Assets\BanHang_Layout\fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -9059,6 +9067,7 @@
     <Content Include="Views\HoaDon\ChiTietDonHang.cshtml" />
     <Content Include="Views\HoaDon\Index.cshtml" />
     <Content Include="Views\HoaDon\XoaHoaDon.cshtml" />
+    <Content Include="Views\HoaDon\InHoaDon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />

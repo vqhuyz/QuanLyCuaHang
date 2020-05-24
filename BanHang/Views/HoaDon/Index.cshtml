@@ -59,8 +59,9 @@
                                             <b>@Html.DisplayFor(m => item.NgayBan)</b>
                                         </td>
                                         <td class="text-center">
-                                            <a class="btn bg-blue btn-sm" href="@Url.Action("ChiTietDonHang", new { Id = item.MaHD })">Xem</a>
-                                            <a href="/HoaDon/XoaHoaDon/@item.MaHD" class="btn bg-blue btn-sm" data-toggle="modal" data-target="#modal-Xoa-@item.MaHD"> Xóa</a>
+                                            <a class="btn bg-blue btn-sm" href="@Url.Action("Printf", new { id = item.MaHD })">In hóa đơn</a>
+                                            <a class="btn bg-olive btn-sm" href="@Url.Action("ChiTietDonHang", new { Id = item.MaHD })">Xem</a>
+                                            <a href="/HoaDon/XoaHoaDon/@item.MaHD" class="btn bg-red btn-sm" data-toggle="modal" data-target="#modal-Xoa-@item.MaHD"> Xóa</a>
                                             <div class="modal fade " id="modal-Xoa-@item.MaHD">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">

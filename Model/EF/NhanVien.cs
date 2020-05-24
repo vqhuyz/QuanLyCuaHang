@@ -20,7 +20,6 @@
         public long MaNV { get; set; }
 
         [StringLength(50)]
-        [Required]
         [Display(Name = "Tên nhân viên")]
         public string TenNV { get; set; }
 
@@ -28,27 +27,22 @@
         public string HinhAnh { get; set; }
 
         [StringLength(10)]
-        [Required]
         [Display(Name = "Giới tính")]
         public string GioiTinh { get; set; }
 
         [Column(TypeName = "date")]
-        [Required]
         [Display(Name = "Ngày sinh")]
         public DateTime NgaySinh { get; set; }
 
         [StringLength(12)]
-        [Required]
         [Display(Name = "Số chứng minh")]
         public string SoCMND { get; set; }
 
         [StringLength(10)]
-        [Required]
         [Display(Name = "Số điện thoại")]
         public string SoDT { get; set; }
 
         [StringLength(50)]
-        [Required]
         [Display(Name = "Chức vụ")]
         public string ChucVu { get; set; }
 
@@ -60,7 +54,6 @@
         public string Email { get; set; }
 
         [StringLength(200)]
-        [Required]
         [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }
 
@@ -71,16 +64,13 @@
         public DateTime NgayThamGia { get; set; }
 
         [StringLength(50)]
-        [Required]
         [Display(Name = "Tài khoản")]
         public string TaiKhoan { get; set; }
 
         [Display(Name = "Mật khẩu")]
-        [Required]
         public string MatKhau { get; set; }
 
         [StringLength(20)]
-        [Required]
         [Display(Name = "Quyền truy cập")]
         public string MaVaiTro { get; set; }
 

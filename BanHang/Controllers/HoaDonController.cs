@@ -1,5 +1,6 @@
 ﻿using Model.DAO;
 using Model.EF;
+using Rotativa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,14 @@ namespace BanHang.Controllers
         }
 
         [HttpGet]
+        public ActionResult InHoaDon(long id)
+        {
+            ViewBag.CTHD = db.CTHDs.Where(x => x.MaHD == id);
+            var donHang = new HoaDonDAO().ViewDetail(id);
+            return View(donHang);
+        }
+
+        [HttpGet]
         public ActionResult XoaHoaDon(long id)
         {
             var hoaDon = new HoaDonDAO().ViewDetail(id);
@@ -46,6 +55,12 @@ namespace BanHang.Controllers
                 return RedirectToAction("Index");
             else
                 return View();
+        }
+
+        public ActionResult Printf(int id)
+        {
+            var report = new ActionAsPdf("InHoaDon", new { id = id });
+            return report;
         }
     }
 }

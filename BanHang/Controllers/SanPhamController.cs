@@ -59,24 +59,21 @@ namespace BanHang.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ThemMoi(SanPham sanPham, HttpPostedFileBase FileAnh)
         {
-            if (ModelState.IsValid)
+            OnlineShopDbContext db = new OnlineShopDbContext();
+            string path = "";
+            if (FileAnh != null && FileAnh.ContentLength > 0)
             {
-                OnlineShopDbContext db = new OnlineShopDbContext();
-                string path = "";
-                if (FileAnh != null && FileAnh.ContentLength > 0)
+                string extension = Path.GetExtension(FileAnh.FileName);
+                if (extension.Equals(".jpg") || extension.Equals(".png") || extension.Equals(".jpeg"))
                 {
-                    string extension = Path.GetExtension(FileAnh.FileName);
-                    if (extension.Equals(".jpg") || extension.Equals(".png") || extension.Equals(".jpeg"))
-                    {
-                        path = Path.Combine(Server.MapPath("~/Image/SanPham/"), FileAnh.FileName);
-                        FileAnh.SaveAs(path);
-                    }
-                    sanPham.HinhAnh = FileAnh.FileName;
-                    db.SanPhams.Add(sanPham);
-                    sanPham.NgayThem = DateTime.Now;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    path = Path.Combine(Server.MapPath("~/Image/SanPham/"), FileAnh.FileName);
+                    FileAnh.SaveAs(path);
                 }
+                sanPham.HinhAnh = FileAnh.FileName;
+                db.SanPhams.Add(sanPham);
+                sanPham.NgayThem = DateTime.Now;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             return View("Index");
         }
@@ -85,18 +82,15 @@ namespace BanHang.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CapNhat(SanPham sanPham)
         {
-            if (ModelState.IsValid)
+            var dao = new SanPhamDAO();
+            var id = dao.Update(sanPham);
+            if (id)
             {
-                var dao = new SanPhamDAO();
-                var id = dao.Update(sanPham);
-                if (id)
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Cập nhật thất bại");
-                }
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Cập nhật thất bại");
             }
             return View("Index");
         }

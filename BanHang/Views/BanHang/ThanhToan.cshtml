@@ -24,7 +24,6 @@
                             <td class="text-center">Số lượng</td>
                             <td class="text-center">Đơn giá</td>
                             <td class="text-center">Thành tiền</td>
-                            <td class="text-center">Thao tác</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,13 +40,10 @@
                                     <td class="text-right">
                                         <input type="number" min="1" step="1" name="soLuongMoi" value="@item.SoLuong" style="width:45px" />
                                         <button type="submit" class="btn bg-red btn-xs">Cập nhật</button>
+                                        <a class="btn bg-blue btn-xs" href="@Url.Action("Xoa", new { @maSP = item.SanPham.MaSP })">Xóa</a>
                                     </td>
                                     <td class="text-center">@String.Format("{0:0,0}", item.SanPham.GiaBan.GetValueOrDefault(0)) VNĐ</td>
                                     <td class="text-center">@String.Format("{0:0,0}", item.SanPham.GiaBan.GetValueOrDefault(0) * item.SoLuong) VNĐ</td>
-                                    <td class="text-center">
-                                        <a class="btn bg-blue btn-sm" href="@Url.Action("Xoa", new { @maSP = item.SanPham.MaSP })">Xóa</a>
-                                       
-                                    </td>
                                 </tr>
                             }
                             @Html.Hidden((tongTien += item.SanPham.GiaBan * item.SoLuong).ToString());
@@ -58,7 +54,7 @@
                         @using (Html.BeginForm("ThanhToan", "BanHang", FormMethod.Post))
                         {
                             <tr>
-                                <td colspan="5"></td>
+                                <td colspan="4"></td>
                                 @Html.Hidden("MaNV", @session.MaNV)
                                 @Html.Hidden("TongSL", tongSL)
                                 @Html.Hidden("TongTien", tongTien)
@@ -66,13 +62,13 @@
                                 <td>Tổng tiền: @String.Format("{0:0,0}", tongTien) VNĐ</td>
                             </tr>
                             <tr>
-                                <td colspan="7">
+                                <td colspan="6">
                                     <h4 class="pull-right"> Mã khách hàng: @Html.TextBox("MaKH")</h4>
                                 </td>
 
                             </tr>
                             <tr class="text-right">
-                                <td colspan="7">
+                                <td colspan="6">
                                     <button type="submit" class="btn bg-aqua btn-lg pull-right">Thanh toán</button>
                                 </td>
                             </tr>

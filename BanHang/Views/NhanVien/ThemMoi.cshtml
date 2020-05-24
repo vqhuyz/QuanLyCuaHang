@@ -4,7 +4,7 @@
     Layout = null;
 }
 
-@using (Html.BeginForm("ThemMoi", "NhanVien", FormMethod.Post, new { enctype = "multipart/form-data", name = "themMoi" }))
+@using (Html.BeginForm("ThemMoi", "NhanVien", FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
 
     <div class="modal-header bg-olive">
@@ -17,7 +17,6 @@
     <div class="modal-body form-horizontal">
 
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
 
         <div class="row">
             <div class="col-md-6">
@@ -25,16 +24,14 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
-                            <input type="file" name="FileAnh" />
-                            @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+                            <input type="file" name="FileAnh" required />
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.TenNV, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
-                            @Html.TextBoxFor(model => model.TenNV, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.TenNV, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.TenNV, new { @class = "form-control", required = "required" })
                         </div>
                     </div>
 
@@ -42,7 +39,7 @@
                         @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
                             <label class="radio-inline">
-                                @Html.RadioButtonFor(model => model.GioiTinh, "Nam")
+                                @Html.RadioButtonFor(model => model.GioiTinh, "Nam", new { required = "required" })
                                 Nam
                             </label>
                             <label class="radio-inline">
@@ -53,7 +50,6 @@
                                 @Html.RadioButtonFor(model => model.GioiTinh, "Khác")
                                 Khác
                             </label>
-                            @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -61,11 +57,10 @@
                         @Html.LabelFor(model => model.NgaySinh, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
                             <div class=" input-group date" id="datetimepicker1">
-                                @Html.TextBoxFor(model => model.NgaySinh, new { @class = "form-control" })
+                                @Html.TextBoxFor(model => model.NgaySinh, new { @class = "form-control" , required = "required" })
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
-                                @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
@@ -73,32 +68,28 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.SoCMND, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
-                            @Html.TextBoxFor(model => model.SoCMND, new { @class = "form-control", @type = "number" })
-                            @Html.ValidationMessageFor(model => model.SoCMND, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.SoCMND, new { @class = "form-control", type = "number" , required = "required" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.SoDT, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
-                            @Html.TextBoxFor(model => model.SoDT, new { @class = "form-control", @type = "number" })
-                            @Html.ValidationMessageFor(model => model.SoDT, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.SoDT, new { @class = "form-control", type = "number" , required = "required" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
-                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", type = "email" , required = "required" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
-                            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control" , required = "required" })
                         </div>
                     </div>
                 </div>
@@ -108,8 +99,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.ChucVu, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
-                            @Html.TextBoxFor(model => model.ChucVu, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.ChucVu, new { @class = "form-control" , required = "required" })
                         </div>
                     </div>
 
@@ -117,7 +107,6 @@
                         @Html.LabelFor(model => model.MucLuong, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
                             @Html.TextBoxFor(model => model.MucLuong, new { @class = "form-control", @type = "number" })
-                            @Html.ValidationMessageFor(model => model.MucLuong, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -125,7 +114,7 @@
                         @Html.LabelFor(model => model.MaVaiTro, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
                             <label class="radio-inline">
-                                @Html.RadioButtonFor(model => model.MaVaiTro, "ADMIN")
+                                @Html.RadioButtonFor(model => model.MaVaiTro, "ADMIN", new { required = "required" })
                                 Admin
                             </label>
                             <label class="radio-inline">
@@ -139,16 +128,14 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.TaiKhoan, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
-                            @Html.TextBoxFor(model => model.TaiKhoan, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.TaiKhoan, new { @class = "form-control", required = "required" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-6">
-                            @Html.TextBoxFor(model => model.MatKhau, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.MatKhau, new { @class = "form-control", required = "required" })
                         </div>
                     </div>
 

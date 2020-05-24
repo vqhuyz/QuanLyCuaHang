@@ -53,67 +53,60 @@ namespace BanHang.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult ThemMoi(KhachHang khachHang)
+        public ActionResult ThemMoi(KhachHang khachHang)
         {
-            if (ModelState.IsValid)
+            var dao = new KhachHangDAO();
+            long id = dao.Insert(khachHang);
+            if (id > 0)
             {
-                var dao = new KhachHangDAO();
-                long id = dao.Insert(khachHang);
-                if (id > 0)
+                if (khachHang.Email == null)
                 {
-                    if (khachHang.Email == null)
-                    {
-                        return Json(new { status = 1, message = "Thêm mới thành công" });
-                    }
-                    else
-                    {
-                        string content = System.IO.File.ReadAllText(Server.MapPath("~/Assets/Email/KhachHang.html"));
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    string content = System.IO.File.ReadAllText(Server.MapPath("~/Assets/Email/KhachHang.html"));
 
-                        content = content.Replace("{{MaKH}}", khachHang.MaKH.ToString());
-                        content = content.Replace("{{TenKH}}", khachHang.TenKH.ToString());
-                        content = content.Replace("{{NgaySinh}}", Common.Format.FormatDate(khachHang.NgaySinh));
-                        content = content.Replace("{{SoDT}}", khachHang.SoDT.ToString());
-                        content = content.Replace("{{Facebook}}", khachHang.Facebook.ToString());
-                        content = content.Replace("{{DiaChi}}", khachHang.DiaChi.ToString());
-                        content = content.Replace("{{NgayDK}}", khachHang.NgayDangKi.ToString());
+                    content = content.Replace("{{MaKH}}", khachHang.MaKH.ToString());
+                    content = content.Replace("{{TenKH}}", khachHang.TenKH.ToString());
+                    content = content.Replace("{{NgaySinh}}", Common.Format.FormatDate(khachHang.NgaySinh));
+                    content = content.Replace("{{SoDT}}", khachHang.SoDT.ToString());
+                    content = content.Replace("{{Facebook}}", khachHang.Facebook.ToString());
+                    content = content.Replace("{{DiaChi}}", khachHang.DiaChi.ToString());
+                    content = content.Replace("{{NgayDK}}", khachHang.NgayDangKi.ToString());
 
-                        new SendMail().Mail(khachHang.Email, "Đăng kí khách hàng thân thiết thành công", content);
-                        return Json(new { status = 1, message = "Thêm mới thành công" });
-                    }
+                    new SendMail().Mail(khachHang.Email, "Đăng kí khách hàng thân thiết thành công", content);
+                    return RedirectToAction("Index");
                 }
             }
-            return Json(new { status = 0, message = "Vui lòng nhập đầy đủ thông tin" });
+            return View("Index");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CapNhat(KhachHang khachHang)
         {
-            if (ModelState.IsValid)
+            var dao = new KhachHangDAO();
+            var id = dao.Update(khachHang);
+            if (id)
             {
-                var dao = new KhachHangDAO();
-                var id = dao.Update(khachHang);
-                if (id)
+                if (khachHang.Email == null)
                 {
-                    if (khachHang.Email == null)
-                    {
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        string content = System.IO.File.ReadAllText(Server.MapPath("~/Assets/Email/KhachHang_Update.html"));
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    string content = System.IO.File.ReadAllText(Server.MapPath("~/Assets/Email/KhachHang_Update.html"));
 
-                        content = content.Replace("{{MaKH}}", khachHang.MaKH.ToString());
-                        content = content.Replace("{{TenKH}}", khachHang.TenKH.ToString());
-                        content = content.Replace("{{SoCMND}}", khachHang.SoCMND.ToString());
-                        content = content.Replace("{{Email}}", khachHang.Email.ToString());
-                        content = content.Replace("{{Facebook}}", khachHang.Facebook.ToString());
-                        content = content.Replace("{{SoDT}}", khachHang.SoDT.ToString());
-                        content = content.Replace("{{DiaChi}}", khachHang.DiaChi.ToString());
+                    content = content.Replace("{{MaKH}}", khachHang.MaKH.ToString());
+                    content = content.Replace("{{TenKH}}", khachHang.TenKH.ToString());
+                    content = content.Replace("{{Email}}", khachHang.Email.ToString());
+                    content = content.Replace("{{Facebook}}", khachHang.Facebook.ToString());
+                    content = content.Replace("{{SoDT}}", khachHang.SoDT.ToString());
+                    content = content.Replace("{{DiaChi}}", khachHang.DiaChi.ToString());
 
-                        new SendMail().Mail(khachHang.Email, "Thay đổi thông tin thành công", content);
-                        return RedirectToAction("Index");
-                    }
+                    new SendMail().Mail(khachHang.Email, "Thay đổi thông tin thành công", content);
+                    return RedirectToAction("Index");
                 }
             }
             return View("Index");

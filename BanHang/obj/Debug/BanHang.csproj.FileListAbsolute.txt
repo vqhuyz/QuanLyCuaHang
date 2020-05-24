@@ -354,3 +354,4 @@ C:\Users\Dev-Huy\Desktop\BanHang\BanHang\bin\pt\Microsoft.ReportViewer.WinForms.
 C:\Users\Dev-Huy\Desktop\BanHang\BanHang\bin\ru\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Dev-Huy\Desktop\BanHang\BanHang\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Dev-Huy\Desktop\BanHang\BanHang\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
+C:\Users\Dev-Huy\Desktop\BanHang\BanHang\bin\Rotativa.dll

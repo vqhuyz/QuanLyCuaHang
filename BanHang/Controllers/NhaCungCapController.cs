@@ -53,32 +53,26 @@ namespace BanHang.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult ThemMoi(NhaCungCap nhaCungCap)
+        public ActionResult ThemMoi(NhaCungCap nhaCungCap)
         {
-            if (ModelState.IsValid)
+            var dao = new NCCDAO();
+            long id = dao.Insert(nhaCungCap);
+            if (id > 0)
             {
-                var dao = new NCCDAO();
-                long id = dao.Insert(nhaCungCap);
-                if (id > 0)
-                {
-                    return Json(new { status = 1, message = "Thêm mới thành công" });
-                }
+                return RedirectToAction("Index");
             }
-            return Json(new { status = 0, message = "Hãy nhập đầy đủ thông tin" });
+            return View("Index");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CapNhat(NhaCungCap nhaCungCap)
         {
-            if (ModelState.IsValid)
+            var dao = new NCCDAO();
+            var id = dao.Update(nhaCungCap);
+            if (id)
             {
-                var dao = new NCCDAO();
-                var id = dao.Update(nhaCungCap);
-                if (id)
-                {
-                    return RedirectToAction("Index");
-                }
+                return RedirectToAction("Index");
             }
             return View("Index");
         }
