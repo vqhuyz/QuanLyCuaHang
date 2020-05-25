@@ -19,8 +19,6 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
-
-            <!-- /.box-header -->
             <div class="box-body">
                 <div>
                     <a href="/LoaiSanPham/ThemMoi" class="btn bg-olive btn-lg" data-toggle="modal" data-target="#modal-themMoi" data-backdrop="static" data-keyboard="false">
@@ -30,13 +28,11 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                             </div>
-                            <!-- /.modal-content -->
                         </div>
-                        <!-- /.modal-dialog -->
                     </div>
                 </div>
                 <br />
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Tên phân loại</th>
@@ -54,9 +50,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                             </div>
-                                            <!-- /.modal-content -->
                                         </div>
-                                        <!-- /.modal-dialog -->
                                     </div>
 
                                     <a href="/LoaiSanPham/Xoa/@item.MaLoaiSP" class="btn bg-navy" data-toggle="modal" data-target="#modal-Xoa-@item.MaLoaiSP">Xóa</a>
@@ -64,9 +58,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                             </div>
-                                            <!-- /.modal-content -->
                                         </div>
-                                        <!-- /.modal-dialog -->
                                     </div>
                                 </td>
                             </tr>
@@ -75,8 +67,6 @@
                 </table>
                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
             </div>
-            <!-- /.box-body -->
         </div>
     </div>
-    <!-- /.col -->
 </div>

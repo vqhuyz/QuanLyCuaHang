@@ -21,7 +21,6 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
-            <!-- /.box-header -->
             <div class="box-body">
                 <div>
                     <a href="@Url.Action("Ds_NhaCungCap","NhaCungCap")" class=" btn btn-primary btn-lg pull-right">
@@ -34,9 +33,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                             </div>
-                            <!-- /.modal-content -->
                         </div>
-                        <!-- /.modal-dialog -->
                     </div>
                 </div>
                 <br />
@@ -52,7 +49,7 @@
                     </div>
                 }
                 <br />
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="example2" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Mã NCC</th>
@@ -76,9 +73,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                             </div>
-                                            <!-- /.modal-content -->
                                         </div>
-                                        <!-- /.modal-dialog -->
                                     </div>
 
                                     <a href="/NhaCungCap/CapNhat/@item.MaNCC" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaNCC" data-backdrop="static" data-keyboard="false">Sửa</a>
@@ -86,18 +81,14 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                             </div>
-                                            <!-- /.modal-content -->
                                         </div>
-                                        <!-- /.modal-dialog -->
                                     </div>
                                     <a href="/NhaCungCap/Xoa/@item.MaNCC" class="btn bg-navy" data-toggle="modal" data-target="#modal-Xoa-@item.MaNCC">Xóa</a>
                                     <div class="modal fade " id="modal-Xoa-@item.MaNCC">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                             </div>
-                                            <!-- /.modal-content -->
                                         </div>
-                                        <!-- /.modal-dialog -->
                                     </div>
 
                                 </td>
@@ -107,10 +98,8 @@
                 </table>
                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @search = ViewBag.Search }))
             </div>
-            <!-- /.box-body -->
         </div>
     </div>
-    <!-- /.col -->
 </div>
 
 

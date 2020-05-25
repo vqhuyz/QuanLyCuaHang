@@ -33,9 +33,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                             </div>
-                            <!-- /.modal-content -->
                         </div>
-                        <!-- /.modal-dialog -->
                     </div>
                 </div>
                 <br />
@@ -51,7 +49,7 @@
                     </div>
                 }
                 <br />
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Mã KH</th>
@@ -81,9 +79,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                             </div>
-                                            <!-- /.modal-content -->
                                         </div>
-                                        <!-- /.modal-dialog -->
                                     </div>
 
                                     <a href="/KhachHang/CapNhat/@item.MaKH" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaKH" data-backdrop="static" data-keyboard="false">Sửa</a>
@@ -91,9 +87,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                             </div>
-                                            <!-- /.modal-content -->
                                         </div>
-                                        <!-- /.modal-dialog -->
                                     </div>
 
                                     <a href="/KhachHang/Xoa/@item.MaKH" class="btn bg-navy" data-toggle="modal" data-target="#modal-Xoa-@item.MaKH">Xóa</a>
@@ -101,9 +95,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                             </div>
-                                            <!-- /.modal-content -->
                                         </div>
-                                        <!-- /.modal-dialog -->
                                     </div>
 
                                 </td>
@@ -113,10 +105,8 @@
                 </table>
                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page, search = ViewBag.Search }))
             </div>
-            <!-- /.box-body -->
         </div>
     </div>
-    <!-- /.col -->
 </div>
 
 

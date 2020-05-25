@@ -31,8 +31,7 @@
                             </span>
                         </div>
                     }
-                    <div class="table-responsive">
-                        <table id="tblData" class="table table-bordered table-middle tblData" method="post">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th class="text-center">Mã số</th>
@@ -66,22 +65,16 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                     </div>
-                                                    <!-- /.modal-content -->
                                                 </div>
-                                                <!-- /.modal-dialog -->
                                             </div>
                                         </td>
                                     </tr>
                                 }
                             </tbody>
                         </table>
-                    </div>
                     @Html.PagedListPager(Model, page => Url.Action("DanhSachDonHang", new { page, search = ViewBag.Search }))
                 </div>
-                <!-- /.box-body -->
             </div>
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
 </section>
