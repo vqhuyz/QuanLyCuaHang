@@ -4,36 +4,17 @@
     ViewBag.Title = "In hóa đơn";
 }
 
-<section class="content">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-body">
-                    <div class="col-md-6">
-                        <h4 class="text-info">Thông tin đơn hàng</h4>
-                        <table>
-                            <tr>
-                                <td><p>Mã hóa đơn:</p> </td>
-                                <td><p>@Html.DisplayFor(model => model.MaHD)</p></td>
-                            </tr>
-                            <tr>
-                                <td><p>Tổng sản phẩm:</p> </td>
-                                <td><p>@Html.DisplayFor(model => model.TongSL)</p></td>
-                            </tr>
-                            <tr>
-                                <td><p>Tổng tiền:</p> </td>
-                                <td><p>@String.Format("{0:0,0}", Model.TongTien) VNĐ</p></td>
-                            </tr>
-                            <tr>
-                                <td><p>Ngày bán:</p> </td>
-                                <td><p>@Html.DisplayFor(model => model.NgayBan)</p></td>
-                            </tr>
-                            <tr>
-                                <td><p>Tên nhân viên:</p> </td>
-                                <td><p>@Html.DisplayFor(model => model.NhanVien.TenNV)</p></td>
-                            </tr>
-                        </table>
-                    </div>
+<div>
+    <h2>Ministop</h2>
+    <p><i>Số điện thoại: 0828365961</i></p>
+    <p><i>Địa chỉ: Thủ Đức</i></p>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-body">
+                <div class="col-md-6">
                     @if (Model.MaKH != null)
                     {
                         <div class="col-md-6">
@@ -50,38 +31,55 @@
                             </table>
                         </div>
                     }
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Hình sản phẩm</th>
-                                <th class="text-center">Mã sản phẩm</th>
-                                <th>Tên sản phẩm</th>
-                                <th class="text-center">Số lượng</th>
-                                <th>Đơn giá</th>
-                                <th>Thành tiền tiền</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (Model.EF.CTHD item in ViewBag.CTHD)
-                            {
-                                <tr>
-                                    <td class="text-center">
-                                        <img src="~/Image/SanPham/@item.SanPham.HinhAnh" width="100" />
-                                    </td>
-                                    <td class="text-center">@item.SanPham.MaSP</td>
-                                    <td>@item.SanPham.TenSP</td>
-                                    <td class="text-center">@item.SoLuong</td>
-                                    <td>@String.Format("{0:0,0}", item.GiaBan) VNĐ</td>
-                                    <td>@String.Format("{0:0,0}", item.GiaBan * item.SoLuong) VNĐ</td>
-                                </tr>
-                            }
-                        </tbody>
+                    <h4 class="text-info">Thông tin đơn hàng</h4>
+                    <table>
+                        <tr>
+                            <td><p>Mã hóa đơn:</p> </td>
+                            <td><p>@Html.DisplayFor(model => model.MaHD)</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Tổng sản phẩm:</p> </td>
+                            <td><p>@Html.DisplayFor(model => model.TongSL)</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Tổng tiền:</p> </td>
+                            <td><p>@String.Format("{0:0,0}", Model.TongTien) VNĐ</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Ngày bán:</p> </td>
+                            <td><p>@Html.DisplayFor(model => model.NgayBan)</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Tên nhân viên:</p> </td>
+                            <td><p>@Html.DisplayFor(model => model.NhanVien.TenNV)</p></td>
+                        </tr>
                     </table>
                 </div>
-                <!-- /.box-body -->
+                <br />
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Mã sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="text-center">Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Model.EF.CTHD item in ViewBag.CTHD)
+                        {
+                            <tr>
+                                <td class="text-center">@item.SanPham.MaSP</td>
+                                <td>@item.SanPham.TenSP</td>
+                                <td class="text-center">@item.SoLuong</td>
+                                <td>@String.Format("{0:0,0}", item.GiaBan) VNĐ</td>
+                                <td>@String.Format("{0:0,0}", item.GiaBan * item.SoLuong) VNĐ</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
-</section>
+</div>
