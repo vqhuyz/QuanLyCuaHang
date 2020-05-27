@@ -1,70 +1,88 @@
 ﻿
 @{
-    ViewBag.Title = "Thống kê";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<h1 class="page-header">
-    @ViewBag.Title
-</h1>
 <section class="content">
     <!-- Small boxes (Stat box) -->
-    <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-red"><i class="ion ion-ios-person-outline"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Nhân viên</span>
-                    <span class="info-box-number">@ViewBag.NhanVien</span>
-                </div>
+    <br />
+    <div class="box box-solid bg-teal-gradient">
+        <div class="box-header">
+            <i class="fa fa-th"></i>
+            <h3 class="box-title">Thống kê</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn bg-teal btn-sm" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Khách hàng</span>
-                    <span class="info-box-number">@ViewBag.KhachHang</span>
+        <div class="box-body border-radius-none">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box" style="background-color:#39cccc">
+                        <span class="info-box-icon bg-red"><i class="ion ion-ios-person-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Nhân viên</span>
+                            <span class="info-box-number">@ViewBag.NhanVien</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box" style="background-color:#39cccc">
+                        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Khách hàng</span>
+                            <span class="info-box-number">@ViewBag.KhachHang</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box" style="background-color:#39cccc">
+                        <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Tổng sản phẩm</span>
+                            <span class="info-box-number">@ViewBag.SanPham</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box" style="background-color:#39cccc">
+                        <p class="text-center">Ministop Thủ Đức</p>
+                        <p class="text-center">Số điện thoại: 0828365961</p>
+                        <p class="text-center">Địa chỉ: Cơ Sở E - HUTECH</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box" style="background-color:#39cccc">
+                        <span class="info-box-icon bg-red"><i class="ion ion-social-usd-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Doanh thu ngày</span>
+                            <span class="info-box-number">@BanHang.Common.Format.FormatCurrencyVND(ViewBag.DoanhThuNgay)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box" style="background-color:#39cccc">
+                        <span class="info-box-icon bg-aqua"><i class="ion ion-social-usd-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Doanh thu tháng</span>
+                            <span class="info-box-number">@BanHang.Common.Format.FormatCurrencyVND(ViewBag.DoanhThuThang)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box" style="background-color:#39cccc">
+                        <span class="info-box-icon bg-yellow"><i class="ion ion-social-usd-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Tổng doanh thu</span>
+                            <span class="info-box-number">@BanHang.Common.Format.FormatCurrencyVND(ViewBag.TongDoanhThu)</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- /.box-body -->
+            <!-- /.box-footer -->
         </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-yellow"><i class="ion ion-social-usd-outline"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Doanh thu</span>
-                    <span class="info-box-number">@BanHang.Common.Format.FormatCurrencyVND(ViewBag.TongDoanhThu)</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Tổng sản phẩm</span>
-                    <span class="info-box-number">@ViewBag.SanPham</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-red"><i class="ion ion-social-usd-outline"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Doanh thu ngày</span>
-                    <span class="info-box-number">@BanHang.Common.Format.FormatCurrencyVND(ViewBag.DoanhThuNgay)</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="ion ion-social-usd-outline"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Doanh thu tháng</span>
-                    <span class="info-box-number">@BanHang.Common.Format.FormatCurrencyVND(ViewBag.DoanhThuThang)</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- /.box -->
 </section>
 
