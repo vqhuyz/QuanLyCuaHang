@@ -1,0 +1,31 @@
+﻿@model Model.EF.SanPham
+@{ 
+    Layout = null;
+}
+
+@using (Html.BeginForm("KhuyenMai", "SanPham", FormMethod.Post))
+{
+    <div class="modal-header bg-maroon">
+        <h4 class="modal-title">Chương trình khuyến mãi</h4>
+    </div>
+
+    <div class="modal-body form-horizontal">
+
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.MaSP)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GiamGia, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.GiamGia, new { required = "required"})
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="clearfix text-right">
+                <button type="submit" class="btn bg-maroon btn-sm">Cập nhật</button>
+                @Html.ActionLink("Đóng", "Index", null, new { @class = "btn btn-default btn-sm", onclick = "return confirm('Các thay đổi sẽ không được cập nhật. Bạn vẫn muốn trở về danh sách?');" })
+            </div>
+        </div>
+    </div>
+}

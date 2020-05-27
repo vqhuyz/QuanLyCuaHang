@@ -56,7 +56,14 @@
                             <td>@item.SoLuong</td>
                             <td>@String.Format("{0:0,0}", item.GiaBan) VNĐ</td>
                             <td class="text-center">
-                                <a href="/SanPham/ThongTin/@item.MaSP" class="btn bg-purple">Thông tin</a>
+                                <a href="/SanPham/KhuyenMai/@item.MaSP" class="btn bg-red" data-toggle="modal" data-target="#modal-khuyenMai-@item.MaSP" data-backdrop="static" data-keyboard="false">Khuyến mãi</a>
+                                <div class="modal fade " id="modal-khuyenMai-@item.MaSP">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/SanPham/ThongTin/@item.MaSP" class="btn bg-purple">Chi tiết</a>
                                 <a href="/SanPham/CapNhat/@item.MaSP" class="btn bg-maroon">Sửa</a>
                                 <a href="/SanPham/Xoa/@item.MaSP" class="btn bg-navy" data-toggle="modal" data-target="#modal-Xoa"> Xóa</a>
                             </td>

@@ -42,11 +42,6 @@ namespace Model.EF
                 .Property(e => e.TongTien)
                 .HasPrecision(19, 4);
 
-            modelBuilder.Entity<HoaDon>()
-                .HasMany(e => e.CTHDs)
-                .WithRequired(e => e.HoaDon)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.SoCMND)
                 .IsFixedLength()
@@ -57,6 +52,16 @@ namespace Model.EF
                 .IsFixedLength()
                 .IsUnicode(false);
 
+            modelBuilder.Entity<KhachHang>()
+                .HasMany(e => e.HoaDons)
+                .WithOptional(e => e.KhachHang)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<LoaiSanPham>()
+                .HasMany(e => e.SanPhams)
+                .WithOptional(e => e.LoaiSanPham)
+                .WillCascadeOnDelete();
+
             modelBuilder.Entity<NhaCungCap>()
                 .Property(e => e.SoDT)
                 .IsFixedLength()
@@ -66,6 +71,11 @@ namespace Model.EF
                 .Property(e => e.MaThue)
                 .IsFixedLength()
                 .IsUnicode(false);
+
+            modelBuilder.Entity<NhaCungCap>()
+                .HasMany(e => e.SanPhams)
+                .WithOptional(e => e.NhaCungCap)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<NhanVien>()
                 .Property(e => e.SoCMND)
@@ -89,6 +99,10 @@ namespace Model.EF
                 .Property(e => e.MaVaiTro)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<NhanVien>()
+                .HasMany(e => e.HoaDons)
+                .WithOptional(e => e.NhanVien)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<SanPham>()
                 .Property(e => e.GiaNhap)
@@ -99,9 +113,8 @@ namespace Model.EF
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<SanPham>()
-                .HasMany(e => e.CTHDs)
-                .WithRequired(e => e.SanPham)
-                .WillCascadeOnDelete(false);
+                .Property(e => e.GiaMoi)
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<VaiTro>()
                 .Property(e => e.MaVaiTro)

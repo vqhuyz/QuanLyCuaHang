@@ -43,25 +43,36 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>@item.MaSP</td>
-                            <td>
-                                <img src="~/Image/SanPham/@item.HinhAnh" width="100" height="auto" />
-                            </td>
-                            <td>@item.TenSP</td>
-                            <td class="text-center">@item.SoLuong</td>
-                            <td class="text-center">@String.Format("{0:0,0}", item.GiaBan) VNĐ</td>
-                            @if (item.SoLuong > 0)
-                            {
-                                <td class="text-center">
-                                    <a href="/BanHang/ThemSanPham?maSP=@item.MaSP&soLuong=1" class="btn bg-aqua">Chọn sản phẩm</a>
+                            <tr>
+                                <td>@item.MaSP</td>
+                                <td>
+                                    <img src="~/Image/SanPham/@item.HinhAnh" width="100" height="auto" />
                                 </td>
-                            }
-                            else
-                            {
-                                <td class="text-center text-red">Hết hàng</td>
-                            }
-                        </tr>
+                                <td>@item.TenSP</td>
+                                <td class="text-center">@item.SoLuong</td>
+                                @if (item.GiamGia != 0)
+                                {
+                                    <td class="text-center">
+                                        <strike>@String.Format("{0:0,0}", item.GiaBan) VNĐ</strike>
+                                        <br />
+                                        @String.Format("{0:0,0}", item.GiaMoi) VNĐ
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="text-center">@String.Format("{0:0,0}", item.GiaBan) VNĐ</td>
+                                }
+                                @if (item.SoLuong > 0)
+                                {
+                                    <td class="text-center">
+                                        <a href="/BanHang/ThemSanPham?maSP=@item.MaSP&soLuong=1" class="btn bg-aqua">Chọn sản phẩm</a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="text-center text-red">Hết hàng</td>
+                                }
+                            </tr>
                         }
                     </tbody>
                 </table>

@@ -55,6 +55,13 @@
         [Display(Name = "Cập nhật")]
         public DateTime? NgayCapNhat { get; set; }
 
+        [Display(Name = "Giảm giá")]
+        public double GiamGia { get; set; }
+
+        [Column(TypeName = "money")]
+        [Display(Name = "Giá mới")]
+        public decimal? GiaMoi { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }
 

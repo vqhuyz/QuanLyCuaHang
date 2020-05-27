@@ -14,6 +14,7 @@ namespace BanHang.Controllers
     public class SanPhamController : Controller
     {
         // GET: SanPham
+        [KiemTraQuyen(MaChucNang = "Xem_SanPham")]
         public ActionResult Index(string search, int page = 1, int pagesize = 10)
         {
             var dao = new SanPhamDAO();
@@ -55,6 +56,13 @@ namespace BanHang.Controllers
             return View(sanPham);
         }
 
+        [HttpGet]
+        public ActionResult KhuyenMai(long id)
+        {
+            var sanPham = new SanPhamDAO().ViewDetail(id);
+            return View(sanPham);
+        }
+
         [HttpPost, ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult ThemMoi(SanPham sanPham, HttpPostedFileBase FileAnh)
@@ -88,10 +96,6 @@ namespace BanHang.Controllers
             {
                 return RedirectToAction("Index");
             }
-            else
-            {
-                ModelState.AddModelError("", "Cập nhật thất bại");
-            }
             return View("Index");
         }
 
@@ -101,6 +105,18 @@ namespace BanHang.Controllers
         {
             var dao = new SanPhamDAO();
             var id = dao.Delete(sanPham);
+            if (id)
+                return RedirectToAction("Index");
+            else
+                return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult KhuyenMai(SanPham sanPham)
+        {
+            var dao = new SanPhamDAO();
+            var id = dao.KhuyenMai(sanPham);
             if (id)
                 return RedirectToAction("Index");
             else

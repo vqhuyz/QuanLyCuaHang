@@ -1,4 +1,4 @@
-﻿namespace Model.EF
+namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -20,14 +20,11 @@
         public long MaSP { get; set; }
 
         [StringLength(200)]
-        [Display(Name = "Tên sản phẩm")]
         public string TenSP { get; set; }
 
-        [Display(Name = "Số lượng")]
         public int? SoLuong { get; set; }
 
         [Column(TypeName = "money")]
-        [Display(Name = "Giá bán")]
         public decimal? GiaBan { get; set; }
 
         public virtual HoaDon HoaDon { get; set; }

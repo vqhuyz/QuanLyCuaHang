@@ -88,8 +88,28 @@ namespace Model.DAO
             try
             {
                 var sanPham = db.SanPhams.Find(entity.MaSP);
-               
+
                 sanPham.SoLuong = entity.SoLuong;
+
+                db.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool KhuyenMai(SanPham entity)
+        {
+            try
+            {
+                var sanPham = db.SanPhams.Find(entity.MaSP);
+
+               
+                sanPham.GiamGia = entity.GiamGia;
+                sanPham.GiaMoi = (decimal)sanPham.GiaBan - (sanPham.GiaBan * (decimal?)(sanPham.GiamGia / 100));
 
                 db.SaveChanges();
 

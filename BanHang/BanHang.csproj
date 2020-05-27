@@ -7393,6 +7393,7 @@
     <Content Include="Views\HoaDon\Index.cshtml" />
     <Content Include="Views\HoaDon\XoaHoaDon.cshtml" />
     <Content Include="Views\HoaDon\InHoaDon.cshtml" />
+    <Content Include="Views\SanPham\KhuyenMai.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />

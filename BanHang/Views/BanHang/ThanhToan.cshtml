@@ -1,11 +1,13 @@
 ﻿@model List<BanHang.Models.ThanhToanSanPham>
 @{
-    ViewBag.Title = "Thanh toán đơn hàng";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
 
-    decimal? tongTien = 0;
-    int tongSL = 0;
-    var session = (Model.EF.NhanVien)Session[BanHang.Common.CommonConstant.USER_SESSION];
+                ViewBag.Title = "Thanh toán đơn hàng";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+
+                decimal? tongTien = 0;
+                int tongSL = 0;
+                var session = (Model.EF.NhanVien)Session[BanHang.Common.CommonConstant.USER_SESSION];
 }
 
 <div class="row">
@@ -42,12 +44,22 @@
                                         <button type="submit" class="btn bg-red btn-xs">Cập nhật</button>
                                         <a class="btn bg-blue btn-xs" href="@Url.Action("Xoa", new { @maSP = item.SanPham.MaSP })">Xóa</a>
                                     </td>
-                                    <td class="text-center">@String.Format("{0:0,0}", item.SanPham.GiaBan.GetValueOrDefault(0)) VNĐ</td>
-                                    <td class="text-center">@String.Format("{0:0,0}", item.SanPham.GiaBan.GetValueOrDefault(0) * item.SoLuong) VNĐ</td>
+                                    @if (item.SanPham.GiamGia != 0)
+                                    {
+                                        <td class="text-center">@String.Format("{0:0,0}", item.SanPham.GiaMoi) VNĐ</td>
+                                        <td class="text-center">@String.Format("{0:0,0}", item.SanPham.GiaMoi * item.SoLuong) VNĐ</td>
+                                        @Html.Hidden((tongTien += item.SanPham.GiaMoi * item.SoLuong).ToString());
+                                        @Html.Hidden((tongSL += item.SoLuong).ToString());
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center">@String.Format("{0:0,0}", item.SanPham.GiaBan) VNĐ</td>
+                                        <td class="text-center">@String.Format("{0:0,0}", item.SanPham.GiaBan * item.SoLuong) VNĐ</td>
+                                        @Html.Hidden((tongTien += item.SanPham.GiaBan * item.SoLuong).ToString());
+                                        @Html.Hidden((tongSL += item.SoLuong).ToString());
+                                    }
                                 </tr>
                             }
-                            @Html.Hidden((tongTien += item.SanPham.GiaBan * item.SoLuong).ToString());
-                            @Html.Hidden((tongSL += item.SoLuong).ToString());
                         }
                     </tbody>
                     <tfoot>
@@ -73,7 +85,7 @@
                                 </td>
                             </tr>
                         }
-                    </tfoot>                   
+                    </tfoot>
                 </table>
             </div>
             <!-- /.box-body -->

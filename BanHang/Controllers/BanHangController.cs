@@ -158,7 +158,5 @@ namespace BanHang.Controllers
             }
             return RedirectToAction("ThanhToan");
         }
-
-
     }
 }

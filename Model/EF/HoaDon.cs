@@ -1,4 +1,4 @@
-﻿namespace Model.EF
+namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -16,24 +16,17 @@
         }
 
         [Key]
-        [Display(Name ="Mã hóa đơn")]
         public long MaHD { get; set; }
 
-        [Display(Name ="Tổng số lượng")]
         public int? TongSL { get; set; }
 
         [Column(TypeName = "money")]
-        [Display(Name = "Tổng tiền")]
         public decimal? TongTien { get; set; }
 
-        [Column(TypeName = "date")]
-        [Display(Name = "Ngày bán")]
         public DateTime NgayBan { get; set; }
 
-        [Display(Name = "Người bán")]
         public long? MaNV { get; set; }
 
-        [Display(Name = "Khách hàng")]
         public long? MaKH { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
