@@ -10,7 +10,7 @@ using BanHang.Common;
 
 namespace BanHang.Controllers
 {
-    public class LoaiSanPhamController : Controller
+    public class LoaiSanPhamController : BaseController
     {
         // GET: LoaiSanPham
         [KiemTraQuyen(MaChucNang = "Xem_PhanLoai")]
@@ -49,7 +49,12 @@ namespace BanHang.Controllers
             long id = dao.Insert(loaiSP);
             if (id > 0)
             {
+                SetAlert("Thêm thành công", "success");
                 return RedirectToAction("Index");
+            }
+            else
+            {
+                SetAlert("Thêm thất bại", "error");
             }
             return View("Index");
         }
@@ -62,6 +67,7 @@ namespace BanHang.Controllers
             var id = dao.Update(loaiSP);
             if (id)
             {
+                SetAlert("Cập nhật thành công", "error");
                 return RedirectToAction("Index");
             }
             return View("Index");
@@ -75,8 +81,10 @@ namespace BanHang.Controllers
             var dao = new LoaiSanPhamDAO();
             var id = dao.Delete(loaiSP);
             if (id)
+            {
+                SetAlert("Xóa thành công", "error");
                 return RedirectToAction("Index");
-
+            }
             else
                 return View();
         }

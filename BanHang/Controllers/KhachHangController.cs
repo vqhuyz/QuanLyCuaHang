@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace BanHang.Controllers
 {
-    public class KhachHangController : Controller
+    public class KhachHangController : BaseController
     {
         // GET: KhachHang
         public ActionResult Index(string search, int page = 1, int pagesize = 10)
@@ -61,6 +61,7 @@ namespace BanHang.Controllers
             {
                 if (khachHang.Email == null)
                 {
+                    SetAlert("Thêm thành công", "success");
                     return RedirectToAction("Index");
                 }
                 else
@@ -76,8 +77,13 @@ namespace BanHang.Controllers
                     content = content.Replace("{{NgayDK}}", khachHang.NgayDangKi.ToString());
 
                     new SendMail().Mail(khachHang.Email, "Đăng kí khách hàng thân thiết thành công", content);
+                    SetAlert("Thêm thành công", "success");
                     return RedirectToAction("Index");
                 }
+            }
+            else
+            {
+                SetAlert("Thêm thất bại", "error");
             }
             return View("Index");
         }
@@ -92,6 +98,7 @@ namespace BanHang.Controllers
             {
                 if (khachHang.Email == null)
                 {
+                    SetAlert("Cập nhật thành công", "success");
                     return RedirectToAction("Index");
                 }
                 else
@@ -106,6 +113,7 @@ namespace BanHang.Controllers
                     content = content.Replace("{{DiaChi}}", khachHang.DiaChi.ToString());
 
                     new SendMail().Mail(khachHang.Email, "Thay đổi thông tin thành công", content);
+                    SetAlert("Cập nhật thành công", "success");
                     return RedirectToAction("Index");
                 }
             }
@@ -119,7 +127,10 @@ namespace BanHang.Controllers
             var dao = new KhachHangDAO();
             var id = dao.Delete(khachHang);
             if (id)
+            {
+                SetAlert("Xóa thành công", "error");
                 return RedirectToAction("Index");
+            }
             else
                 return View("Index");
         }

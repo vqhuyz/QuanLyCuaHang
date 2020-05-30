@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace BanHang.Controllers
 {
-    public class NhanVienController : Controller
+    public class NhanVienController : BaseController
     {
         // GET: NhanVien
         [KiemTraQuyen(MaChucNang = "Xem_NhanVien")]
@@ -74,6 +74,8 @@ namespace BanHang.Controllers
 
                 db.NhanViens.Add(nhanVien);
                 db.SaveChanges();
+
+                SetAlert("Thêm mới thành công", "success");
                 return RedirectToAction("Index");
             }
             return View("Index");
@@ -87,6 +89,7 @@ namespace BanHang.Controllers
             var id = dao.Update(nhanVien);
             if (id)
             {
+                SetAlert("Cập nhật thành công", "error");
                 return RedirectToAction("Index");
             }
             return View("Index");
@@ -99,7 +102,10 @@ namespace BanHang.Controllers
             var dao = new NhanVienDAO();
             var id = dao.Delete(nhanVien);
             if (id)
+            {
+                SetAlert("Xóa thành công", "error");
                 return RedirectToAction("Index");
+            }
             else
                 return View();
         }

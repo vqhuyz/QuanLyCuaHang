@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace BanHang.Controllers
 {
-    public class NhaCungCapController : Controller
+    public class NhaCungCapController : BaseController
     {
         // GET: NhaCungCap
         [KiemTraQuyen(MaChucNang = "Xem_NhaCungCap")]
@@ -59,7 +59,12 @@ namespace BanHang.Controllers
             long id = dao.Insert(nhaCungCap);
             if (id > 0)
             {
+                SetAlert("Thêm thành công", "success");
                 return RedirectToAction("Index");
+            }
+            else
+            {
+                SetAlert("Thêm thất bại", "error");
             }
             return View("Index");
         }
@@ -72,6 +77,7 @@ namespace BanHang.Controllers
             var id = dao.Update(nhaCungCap);
             if (id)
             {
+                SetAlert("Cập nhật thành công", "error");
                 return RedirectToAction("Index");
             }
             return View("Index");
@@ -85,7 +91,10 @@ namespace BanHang.Controllers
             var dao = new NCCDAO();
             var id = dao.Delete(nhaCungCap);
             if (id)
+            {
+                SetAlert("Xóa thành công", "error");
                 return RedirectToAction("Index");
+            }
             else
                 return View();
         }

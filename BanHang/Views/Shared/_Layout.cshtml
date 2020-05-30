@@ -36,6 +36,12 @@
         </aside>
         <div class="content-wrapper">
             <section class="content-header">
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="AlertBox" class="alert @TempData["AlertType"]">
+                        @TempData["AlertMessage"]
+                    </div>
+                }
                 @RenderBody()
             </section>
             <section class="content container-fluid"></section>
@@ -50,5 +56,9 @@
     <script src="~/Assets/AdminLTE-2.4.18/dist/js/adminlte.min.js"></script>
     <script src="~/Scripts/moment.min.js"></script>
     <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script>
+        $('#AlertBox').removeClass('hide');
+        $('#AlertBox').delay(1500).slideUp(500);
+    </script>
 </body>
 </html> 

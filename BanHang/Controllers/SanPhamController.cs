@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace BanHang.Controllers
 {
-    public class SanPhamController : Controller
+    public class SanPhamController : BaseController
     {
         // GET: SanPham
         [KiemTraQuyen(MaChucNang = "Xem_SanPham")]
@@ -106,7 +106,10 @@ namespace BanHang.Controllers
             var dao = new SanPhamDAO();
             var id = dao.Delete(sanPham);
             if (id)
+            {
+                SetAlert("Xóa thành công", "error");
                 return RedirectToAction("Index");
+            }
             else
                 return View();
         }
@@ -118,7 +121,10 @@ namespace BanHang.Controllers
             var dao = new SanPhamDAO();
             var id = dao.KhuyenMai(sanPham);
             if (id)
+            {
+                SetAlert("Đã thêm sản phẩm khuyến mãi", "error");
                 return RedirectToAction("Index");
+            }
             else
                 return View();
         }

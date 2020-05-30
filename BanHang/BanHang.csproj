@@ -7415,7 +7415,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\DangNhapModel.cs" />
     <Compile Include="Models\DrownList.cs" />
     <Compile Include="Models\ThanhToanSanPham.cs" />
