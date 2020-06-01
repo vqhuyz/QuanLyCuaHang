@@ -4,3 +4,9 @@ C:\Users\Dev-Huy\source\repos\BanHang\Common\obj\Debug\Common.csprojAssemblyRefe
 C:\Users\Dev-Huy\source\repos\BanHang\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\Users\Dev-Huy\source\repos\BanHang\Common\obj\Debug\Common.dll
 C:\Users\Dev-Huy\source\repos\BanHang\Common\obj\Debug\Common.pdb
+C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\Common\bin\Debug\Common.dll
+C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\Common\bin\Debug\Common.pdb
+C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\Common\obj\Debug\Common.csprojAssemblyReference.cache
+C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\Common\obj\Debug\Common.dll
+C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\Common\obj\Debug\Common.pdb
