@@ -1,5 +1,5 @@
 ﻿using BanHang.Common;
-using Common;
+using BanHang.Models;
 using Model.DAO;
 using Model.EF;
 using OfficeOpenXml;

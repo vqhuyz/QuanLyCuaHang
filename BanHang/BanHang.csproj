@@ -7417,6 +7417,7 @@
     </Compile>
     <Compile Include="Models\DangNhapModel.cs" />
     <Compile Include="Models\DrownList.cs" />
+    <Compile Include="Models\SendMail.cs" />
     <Compile Include="Models\ThanhToanSanPham.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -8076,12 +8077,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\TE\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{74f69a41-c0e8-4bda-aaf5-b291bf359e3c}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{F2DD75BD-08C1-466C-90B1-616697D3AB4C}</Project>
       <Name>Model</Name>
