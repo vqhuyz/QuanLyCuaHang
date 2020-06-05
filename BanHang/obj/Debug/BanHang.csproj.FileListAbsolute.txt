@@ -358,7 +358,6 @@ C:\Users\Dev-Huy\Desktop\BanHang\BanHang\bin\Rotativa.dll
 C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\BanHang.dll.config
 C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\BanHang.dll
 C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\BanHang.pdb
-C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\Common.dll
 C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\EntityFramework.dll
 C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\EntityFramework.SqlServer.dll
 C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\EPPlus.dll
@@ -390,7 +389,6 @@ C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\Microsoft.VisualStudio.OLE.In
 C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\Microsoft.VisualStudio.TextManager.Interop.dll
 C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
 C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\Microsoft.MSXML.dll
-C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\Common.pdb
 C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\Model.pdb
 C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\Model.dll.config
 C:\Users\Dev-Huy\Desktop\QuanLyCuaHang\BanHang\bin\EntityFramework.xml
