@@ -22,9 +22,8 @@
         [Display(Name = "Tên nhà cung cấp")]
         public string TenNCC { get; set; }
 
-        [StringLength(10)]
         [Display(Name = "Số điện thoại")]
-        public string SoDT { get; set; }
+        public int SoDT { get; set; }
 
         [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }

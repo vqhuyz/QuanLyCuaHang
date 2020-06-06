@@ -47,10 +47,6 @@ namespace Model.EF
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<KhachHang>()
-                .Property(e => e.SoDT)
-                .IsFixedLength()
-                .IsUnicode(false);
 
             modelBuilder.Entity<KhachHang>()
                 .HasMany(e => e.HoaDons)
@@ -61,11 +57,6 @@ namespace Model.EF
                 .HasMany(e => e.SanPhams)
                 .WithOptional(e => e.LoaiSanPham)
                 .WillCascadeOnDelete();
-
-            modelBuilder.Entity<NhaCungCap>()
-                .Property(e => e.SoDT)
-                .IsFixedLength()
-                .IsUnicode(false);
 
             modelBuilder.Entity<NhaCungCap>()
                 .Property(e => e.MaThue)
@@ -79,11 +70,6 @@ namespace Model.EF
 
             modelBuilder.Entity<NhanVien>()
                 .Property(e => e.SoCMND)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<NhanVien>()
-                .Property(e => e.SoDT)
                 .IsFixedLength()
                 .IsUnicode(false);
 

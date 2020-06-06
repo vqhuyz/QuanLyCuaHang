@@ -34,13 +34,12 @@
         [Display(Name = "Ngày sinh")]
         public DateTime NgaySinh { get; set; }
 
-        [StringLength(12)]
+        [StringLength(20)]
         [Display(Name = "Số chứng minh")]
         public string SoCMND { get; set; }
 
-        [StringLength(10)]
         [Display(Name = "Số điện thoại")]
-        public string SoDT { get; set; }
+        public int SoDT { get; set; }
 
         [StringLength(50)]
         [Display(Name = "Chức vụ")]
