@@ -1,0 +1,6 @@
+﻿@model List<Model.EF.LoaiSanPham>
+
+@foreach (var item in Model)
+{
+    <a class="dropdown-item bg-success" href="@Url.Action("ListByMenuSide", "TrangChu", new { id = item.MaLoaiSP })">@item.TenLoai</a>
+}

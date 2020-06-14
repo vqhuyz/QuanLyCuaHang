@@ -1,0 +1,42 @@
+﻿@model List<Model.EF.SanPham>
+@{
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<div class="col-sm-12 products">
+    <div class="row category-title py-2 bg-info">
+        <h3 class="text-uppercase pl-3">@ViewBag.CategoryTitle</h3>
+    </div>
+    <div class="row flex-wrap mt-3">
+        @foreach (var item in Model)
+        {
+            <div href="#" class="card col-sm-2 p-0 product">
+                <a href="@Url.Action("Details", "TrangChu", new { id = item.MaSP })" class="text-decoration-none">
+                    <img class="card-img-top" src="~/Image/SanPham/@item.HinhAnh" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.TenSP</h5>
+                    </div>
+                </a>
+                <div class="mt-2 pt-3">
+                    @if (item.GiamGia > 0)
+                    {
+                        <div class="ml-3 mb-3 text-dark font-weight-bold price">@String.Format("{0:0,0}", item.GiaBan) ₫</div>
+                        <div class="ml-3 text-danger font-weight-bold price">@String.Format("{0:0,0}", item.GiaMoi) ₫ <div class="line"></div></div>
+                    }
+                    else
+                    {
+                        <div class="ml-3 mb-3 text-dark font-weight-bold price">@String.Format("{0:0,0}", item.GiaBan) ₫</div>
+                    }
+                </div>
+                <a href="@Url.Action("Details", "TrangChu", new { id = item.MaSP })" class="btn btn-dark btn-more-details">Xem chi tiết<i class="fas fa-info-circle"></i></a>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <a href="@Url.Action("AllProduct", "TrangChu")" class="btn btn-outline-info mt-3 px-4">Trở lại</a>
+        </div>
+    </div>
+</div>
+
+
