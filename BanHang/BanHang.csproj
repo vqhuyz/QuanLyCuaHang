@@ -10740,11 +10740,11 @@
     <Content Include="Views\SanPham\KhuyenMai.cshtml" />
     <Content Include="Views\Shared\_LayoutClient.cshtml" />
     <Content Include="Views\TrangChu\Index.cshtml" />
-    <Content Include="Views\TrangChu\Details.cshtml" />
-    <Content Include="Views\TrangChu\AllPromotion.cshtml" />
-    <Content Include="Views\TrangChu\AllProduct.cshtml" />
-    <Content Include="Views\TrangChu\ListCategory.cshtml" />
-    <Content Include="Views\TrangChu\ListByMenuSide.cshtml" />
+    <Content Include="Views\TrangChu\ChiTiet.cshtml" />
+    <Content Include="Views\TrangChu\SanPhamKhuyenMai.cshtml" />
+    <Content Include="Views\TrangChu\TatCaSanPham.cshtml" />
+    <Content Include="Views\TrangChu\Menu.cshtml" />
+    <Content Include="Views\TrangChu\PhanLoaiSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />

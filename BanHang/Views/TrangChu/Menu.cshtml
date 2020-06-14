@@ -1,0 +1,6 @@
+﻿@model List<Model.EF.LoaiSanPham>
+
+@foreach (var item in Model)
+{
+    <a class="dropdown-item" style="background:#fa8231" href="@Url.Action("PhanLoaiSanPham", "TrangChu", new { id = item.MaLoaiSP })">@item.TenLoai</a>
+}

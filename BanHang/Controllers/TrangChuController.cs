@@ -21,20 +21,20 @@ namespace BanHang.Controllers
 
 
         // product details
-        public ActionResult Details(long id)
+        public ActionResult ChiTiet(long id)
         {
             var sanPham = db.SanPhams.Single(x => x.MaSP == id);
             ViewBag.ChiTiet = ListByCategoryId(sanPham.MaLoaiSP, 12);
             return View(sanPham);
         }
 
-        public ActionResult AllPromotion()
+        public ActionResult SanPhamKhuyenMai()
         {
             var sanPham = db.SanPhams.Where(x => x.GiamGia > 0).ToList();
             return View(sanPham);
         }
 
-        public ActionResult AllProduct(int? page)
+        public ActionResult TatCaSanPham(int? page)
         {
             int pageSize = 18;
             int pageNum = (page ?? 1);
@@ -50,14 +50,14 @@ namespace BanHang.Controllers
             return sanPham;
         }
 
-        public ActionResult ListCategory()
+        public ActionResult Menu()
         {
             var loaiSP = db.LoaiSanPhams.ToList();
             return PartialView(loaiSP);
         }
 
         // changed into the top 3 menu
-        public ActionResult ListByMenuSide(long id)
+        public ActionResult PhanLoaiSanPham(long id)
         {
             var sanPham = ListByCategoryId(id, 8);
             var loaiSP = db.LoaiSanPhams.Single(x => x.MaLoaiSP == id);
