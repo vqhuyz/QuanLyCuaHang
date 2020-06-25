@@ -34,21 +34,21 @@
                         <tr>
                             <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Mã sản phẩm</th>
                             <th style="background-color:#80d6ff;  font-size : 15px;text-align: center">Hình ảnh</th>
-                            <th class="prod_name" style="background-color:#80d6ff;  font-size : 15px;text-align: center">Tên sản phẩm</th>
-                            <th class="text-center" style="background-color:#80d6ff; font-size : 15px;text-align: center">Số lượng còn</th>
-                            <th class="text-center" style="background-color:#80d6ff; font-size : 15px;text-align: center">Giá bán</th>
-                            <th class="text-center" style="background-color:#80d6ff; font-size : 15px;text-align: center">Chọn sản phẩm</th>
+                            <th style="background-color:#80d6ff;  font-size : 15px;text-align: center">Tên sản phẩm</th>
+                            <th style="background-color:#80d6ff; font-size : 15px;text-align: center">Số lượng còn</th>
+                            <th style="background-color:#80d6ff; font-size : 15px;text-align: center">Giá bán</th>
+                            <th style="background-color:#80d6ff; font-size : 15px;text-align: center">Chọn sản phẩm</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.MaSP</td>
-                                <td>
+                                <td class="text-center">@item.MaSP</td>
+                                <td class="text-center">
                                     <img src="~/Image/SanPham/@item.HinhAnh" width="100" height="auto" />
                                 </td>
-                                <td>@item.TenSP</td>
+                                <td class="text-center">@item.TenSP</td>
                                 <td class="text-center">@item.SoLuong</td>
                                 @if (item.GiamGia != 0)
                                 {

@@ -36,14 +36,14 @@
                     <thead>
                         <tr>
                             <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Tên phân loại</th>
-                            <th class="text-center" style="background-color:#80d6ff; font-size : 15px; text-align: center">Thao tác</th>
+                            <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td style="padding-top: 12px;text-align: center">@item.TenLoai</td>
+                                <td style="padding-top: 12px; text-align: center">@item.TenLoai</td>
                                 <td class="text-center">
                                     <a href="/LoaiSanPham/CapNhat/@item.MaLoaiSP" class="btn bg-maroon" style="border-radius:15px" data-toggle="modal" data-target="#modal-capNhat-@item.MaLoaiSP" data-backdrop="static" data-keyboard="false">Sửa</a>
                                     <div class="modal fade " id="modal-capNhat-@item.MaLoaiSP">

@@ -35,6 +35,9 @@
                         @Html.Raw(@Model.Mota.ToString())
                     }
                 </p>
+                <div class="brand text-secondary my-3">
+                    Thương hiệu: @Model.ThuongHieu
+                </div>
                 @if (Model.GiamGia == 0)
                 {
                     <div class="price text-danger font-weight-bold">
@@ -50,9 +53,6 @@
                         @String.Format("{0:0,0}", Model.GiaMoi) ₫
                     </div>
                 }
-                <div class="brand text-secondary my-3">
-                    Thương hiệu: @Model.ThuongHieu
-                </div>
             </div>
         </div>
         <div class="row">
