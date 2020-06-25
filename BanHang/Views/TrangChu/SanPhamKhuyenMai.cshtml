@@ -29,9 +29,7 @@
                     <div class="mt-2 pt-1">
                         <div class="ml-3 mb-3 text-dark font-weight-bold price">@String.Format("{0:0,0}", item.GiaBan) ₫</div>
                         <div class="ml-3 text-danger font-weight-bold price">@String.Format("{0:0,0}", item.GiaMoi) ₫ <div class="line"></div></div>
-                        <button class="cart-plus text-warning bg-white border-0"><i class="fas fa-cart-plus"></i></button>
                     </div>
-
                     <a href="@Url.Action("ChiTiet", "TrangChu", new { id = item.MaSP })" class="btn btn-dark btn-more-details">Xem chi tiết <i class="fas fa-info-circle"></i></a>
                 </div>
             }

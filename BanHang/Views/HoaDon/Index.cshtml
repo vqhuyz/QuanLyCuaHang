@@ -34,11 +34,11 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Mã số</th>
-                                    <th class="text-center">Tên khách hàng</th>
-                                    <th class="text-center">Tổng tiền</th>
-                                    <th class="text-center">Ngày đặt</th>
-                                    <th class="text-center">Thao tác</th>
+                                    <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Mã số</th>
+                                    <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Tên khách hàng</th>
+                                    <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Tổng tiền</th>
+                                    <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Ngày đặt</th>
+                                    <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,9 +58,9 @@
                                             <b>@Html.DisplayFor(m => item.NgayBan)</b>
                                         </td>
                                         <td class="text-center">
-                                            <a class="btn bg-blue btn-sm" href="@Url.Action("Printf", new { id = item.MaHD })">In hóa đơn</a>
-                                            <a class="btn bg-olive btn-sm" href="@Url.Action("ChiTietDonHang", new { Id = item.MaHD })">Xem</a>
-                                            <a href="/HoaDon/XoaHoaDon/@item.MaHD" class="btn bg-red btn-sm" data-toggle="modal" data-target="#modal-Xoa-@item.MaHD"> Xóa</a>
+                                            <a class="btn bg-blue btn-sm" style="border-radius:15px" href="@Url.Action("Printf", new { id = item.MaHD })">In hóa đơn</a>
+                                            <a class="btn bg-olive btn-sm" style="border-radius:15px" href="@Url.Action("ChiTietDonHang", new { Id = item.MaHD })">Xem</a>
+                                            <a href="/HoaDon/XoaHoaDon/@item.MaHD" class="btn bg-red btn-sm" style="border-radius:15px" data-toggle="modal" data-target="#modal-Xoa-@item.MaHD"> Xóa</a>
                                             <div class="modal fade " id="modal-Xoa-@item.MaHD">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">

@@ -52,47 +52,45 @@
                 <table id="example2" class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Mã NCC</th>
-                            <th>Tên nhà cung cấp</th>
-                            <th>Số điện thoại</th>
-                            <th>Email</th>
-                            <th class="text-center">Thao tác</th>
+                            <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Mã NCC</th>
+                            <th style="background-color: #80d6ff; font-size: 15px; text-align: center">Tên nhà cung cấp</th>
+                            <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Số điện thoại</th>
+                            <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Email</th>
+                            <th class="text-center" style="background-color:#80d6ff; font-size : 15px; text-align: center">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>@item.MaNCC</td>
-                                <td>@item.TenNCC</td>
-                                <td>@item.SoDT</td>
-                                <td>@item.Email</td>
-                                <td class="text-center">
-                                    <a href="/NhaCungCap/ThongTin/@item.MaNCC" class="btn bg-purple" data-toggle="modal" data-target="#modal-thongTin-@item.MaNCC" data-backdrop="static" data-keyboard="false">Chi tiết</a>
-                                    <div class="modal fade " id="modal-thongTin-@item.MaNCC">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                            </div>
+                        <tr>
+                            <td style="padding-top: 12px;text-align: center">@item.MaNCC</td>
+                            <td style="padding-top: 12px;text-align: center">@item.TenNCC</td>
+                            <td style="padding-top: 12px;text-align: center">@item.SoDT</td>
+                            <td style="padding-top: 12px;text-align: center">@item.Email</td>
+                            <td class="text-center">
+                                <a href="/NhaCungCap/ThongTin/@item.MaNCC" class="btn bg-purple" style="border-radius: 15px" data-toggle="modal" data-target="#modal-thongTin-@item.MaNCC" data-backdrop="static" data-keyboard="false">Chi tiết</a>
+                                <div class="modal fade " id="modal-thongTin-@item.MaNCC">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
                                         </div>
                                     </div>
-
-                                    <a href="/NhaCungCap/CapNhat/@item.MaNCC" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaNCC" data-backdrop="static" data-keyboard="false">Sửa</a>
-                                    <div class="modal fade " id="modal-capNhat-@item.MaNCC">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                            </div>
+                                </div>
+                                <a href="/NhaCungCap/CapNhat/@item.MaNCC" class="btn bg-maroon" style="border-radius: 15px" data-toggle="modal" data-target="#modal-capNhat-@item.MaNCC" data-backdrop="static" data-keyboard="false">Sửa</a>
+                                <div class="modal fade " id="modal-capNhat-@item.MaNCC">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
                                         </div>
                                     </div>
-                                    <a href="/NhaCungCap/Xoa/@item.MaNCC" class="btn bg-navy" data-toggle="modal" data-target="#modal-Xoa-@item.MaNCC">Xóa</a>
-                                    <div class="modal fade " id="modal-Xoa-@item.MaNCC">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                            </div>
+                                </div>
+                                <a href="/NhaCungCap/Xoa/@item.MaNCC" class="btn bg-navy" style="border-radius: 15px" data-toggle="modal" data-target="#modal-Xoa-@item.MaNCC">Xóa</a>
+                                <div class="modal fade " id="modal-Xoa-@item.MaNCC">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
                                         </div>
                                     </div>
-
-                                </td>
-                            </tr>
+                                </div>
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>

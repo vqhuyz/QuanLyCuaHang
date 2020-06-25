@@ -53,47 +53,45 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Mã NV</th>
-                            <th>Tên nhân viên</th>
-                            <th>Số chứng minh</th>
-                            <th>Số điện thoại</th>
-                            <th>Ngày sinh</th>
-                            <th>Giới tính</th>
-                            <th>Email</th>
-                            <th class="text-center">Thao tác</th>
+                            <th style="background-color:#80d6ff; font-size: 15px; text-align: center">Mã NV</th>
+                            <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Tên nhân viên</th>
+                            <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Số chứng minh</th>
+                            <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Số điện thoại</th>
+                            <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Ngày sinh</th>
+                            <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Giới tính</th>
+                            <th style="background-color:#80d6ff; font-size : 15px; text-align: center">Email</th>
+                            <th class="text-center" style="background-color:#80d6ff; font-size : 15px; text-align: center">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>@item.MaNV</td>
-                                <td>@item.TenNV</td>
-                                <td>@item.SoCMND</td>
-                                <td>@item.SoDT</td>
-                                <td>@BanHang.Common.Format.FormatDate(item.NgaySinh)</td>
-                                <td>@item.GioiTinh</td>
-                                <td>@item.Email</td>
-                                <td class="text-center">
-                                    <a href="/NhanVien/ThongTin/@item.MaNV" class="btn bg-purple">Chi tiết</a>
-
-                                    <a href="/NhanVien/CapNhat/@item.MaNV" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaNV" data-backdrop="static" data-keyboard="false">Sửa</a>
-                                    <div class="modal fade " id="modal-capNhat-@item.MaNV">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                            </div>
+                        <tr>
+                            <td style="padding-top: 12px;text-align: center">@item.MaNV</td>
+                            <td style="padding-top: 12px;text-align: center">@item.TenNV</td>
+                            <td style="padding-top: 12px;text-align: center">@item.SoCMND</td>
+                            <td style="padding-top: 12px;text-align: center">@item.SoDT</td>
+                            <td style="padding-top: 12px;text-align: center">@BanHang.Common.Format.FormatDate(item.NgaySinh)</td>
+                            <td style="padding-top: 12px;text-align: center">@item.GioiTinh</td>
+                            <td style="padding-top: 12px;text-align: center">@item.Email</td>
+                            <td class="text-center">
+                                <a href="/NhanVien/ThongTin/@item.MaNV" class="btn bg-purple btn_details" style="border-radius: 15px">Chi tiết</a>
+                                <a href="/NhanVien/CapNhat/@item.MaNV" class="btn bg-maroon btn_update" style="border-radius: 15px" data-toggle="modal" data-target="#modal-capNhat-@item.MaNV" data-backdrop="static" data-keyboard="false">Sửa</a>
+                                <div class="modal fade " id="modal-capNhat-@item.MaNV">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
                                         </div>
                                     </div>
-
-                                    <a href="/NhanVien/Xoa/@item.MaNV" class="btn bg-navy" data-toggle="modal" data-target="#modal-Xoa-@item.MaNV"> Xóa</a>
-                                    <div class="modal fade " id="modal-Xoa-@item.MaNV">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                            </div>
+                                </div>
+                                <a href="/NhanVien/Xoa/@item.MaNV" class="btn bg-navy btn_delete" style="border-radius: 15px" data-toggle="modal" data-target="#modal-Xoa-@item.MaNV"> Xóa</a>
+                                <div class="modal fade " id="modal-Xoa-@item.MaNV">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
                                         </div>
                                     </div>
-                                </td>
-                            </tr>
+                                </div>
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>

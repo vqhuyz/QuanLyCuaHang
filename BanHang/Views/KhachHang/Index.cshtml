@@ -52,54 +52,51 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Mã KH</th>
-                            <th>Tên khách hàng</th>
-                            <th>Số chứng minh</th>
-                            <th>Số điện thoại</th>
-                            <th>Ngày sinh</th>
-                            <th>Giới tính</th>
-                            <th>Email</th>
-                            <th class="text-center">Thao tác</th>
+                            <th class="cus_id" style="background-color:#80d6ff; font-size : 15px; text-align: center">Mã KH</th>
+                            <th class="cus_name" style="background-color:#80d6ff; font-size : 15px; text-align: center">Tên khách hàng</th>
+                            <th class="cus_card" style="background-color:#80d6ff; font-size : 15px; text-align: center">Số chứng minh</th>
+                            <th class="cus_telenumber" style="background-color:#80d6ff; font-size : 15px; text-align: center">Số điện thoại</th>
+                            <th class="cus_birthday" style="background-color:#80d6ff; font-size : 15px; text-align: center">Ngày sinh</th>
+                            <th class="cus_gender" style="background-color:#80d6ff; font-size : 15px; text-align: center">Giới tính</th>
+                            <th class="cus_mail" style="background-color:#80d6ff; font-size : 15px; text-align: center">Email</th>
+                            <th class="cus_act" style="background-color:#80d6ff; font-size : 15px; text-align: center">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>@item.MaKH</td>
-                                <td>@item.TenKH</td>
-                                <td>@item.SoCMND</td>
-                                <td>@item.SoDT</td>
-                                <td>@BanHang.Common.Format.FormatDate(item.NgaySinh)</td>
-                                <td>@item.GioiTinh</td>
-                                <td>@item.Email</td>
-                                <td class="text-center">
-                                    <a href="/KhachHang/ThongTin/@item.MaKH" class="btn bg-purple" data-toggle="modal" data-target="#modal-thongTin-@item.MaKH" data-backdrop="static" data-keyboard="false">Chi tiết</a>
-                                    <div class="modal fade " id="modal-thongTin-@item.MaKH">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                            </div>
+                        <tr>
+                            <td style="padding-top: 12px;text-align: center">@item.MaKH</td>
+                            <td style="padding-top: 12px;text-align: center">@item.TenKH</td>
+                            <td style="padding-top: 12px;text-align: center">@item.SoCMND</td>
+                            <td style="padding-top: 12px;text-align: center">@item.SoDT</td>
+                            <td style="padding-top: 12px;text-align: center">@BanHang.Common.Format.FormatDate(item.NgaySinh)</td>
+                            <td style="padding-top: 12px;text-align: center">@item.GioiTinh</td>
+                            <td style="padding-top: 12px;text-align: center">@item.Email</td>
+                            <td class="text-center">
+                                <a href="/KhachHang/ThongTin/@item.MaKH" class="btn bg-purple" style="border-radius:15px; height:30px!important" data-toggle="modal" data-target="#modal-thongTin-@item.MaKH" data-backdrop="static" data-keyboard="false">Chi tiết</a>
+                                <div class="modal fade " id="modal-thongTin-@item.MaKH">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
                                         </div>
                                     </div>
-
-                                    <a href="/KhachHang/CapNhat/@item.MaKH" class="btn bg-maroon" data-toggle="modal" data-target="#modal-capNhat-@item.MaKH" data-backdrop="static" data-keyboard="false">Sửa</a>
-                                    <div class="modal fade " id="modal-capNhat-@item.MaKH">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                            </div>
+                                </div>
+                                <a href="/KhachHang/CapNhat/@item.MaKH" class="btn bg-maroon" style="border-radius:15px; height:30px!important" data-toggle="modal" data-target="#modal-capNhat-@item.MaKH" data-backdrop="static" data-keyboard="false">Sửa</a>
+                                <div class="modal fade " id="modal-capNhat-@item.MaKH">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
                                         </div>
                                     </div>
-
-                                    <a href="/KhachHang/Xoa/@item.MaKH" class="btn bg-navy" data-toggle="modal" data-target="#modal-Xoa-@item.MaKH">Xóa</a>
-                                    <div class="modal fade " id="modal-Xoa-@item.MaKH">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                            </div>
+                                </div>
+                                <a href="/KhachHang/Xoa/@item.MaKH" class="btn bg-navy" style="border-radius:15px; height:30px!important" data-toggle="modal" data-target="#modal-Xoa-@item.MaKH">Xóa</a>
+                                <div class="modal fade " id="modal-Xoa-@item.MaKH">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
                                         </div>
                                     </div>
-
-                                </td>
-                            </tr>
+                                </div>
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
