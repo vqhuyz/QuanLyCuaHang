@@ -1,5 +1,6 @@
 ﻿
 <section class="sidebar">
+   
     <!-- Sidebar user panel (optional) -->
     @{
         var session = (Model.EF.NhanVien)Session[BanHang.Common.CommonConstant.USER_SESSION];
@@ -47,7 +48,7 @@
                     <i class="fa fa-users"></i> <span>Khách Hàng</span>
                 </a>
             </li>
-            <li class="header">QUẢN LÝ</li>
+            <li class="header" >QUẢN LÝ</li>
             <li id="customers">
                 <a href="@Url.Action("Index","NhanVien")">
                     <i class="fa fa-user"></i> <span>Nhân Viên</span>
@@ -69,7 +70,7 @@
                     <i class="fa fa-cubes"></i> <span>Phân Loại Sản Phẩm</span>
                 </a>
             </li>
-            <li class="header">QUẢN LÝ CÁ NHÂN</li>
+            <li class="header" >QUẢN LÝ CÁ NHÂN</li>
             <li>
                 <a href="@Url.Action("Index","ThongTinCaNhan", session)">
                     <i class="fa fa-user"></i> <span>Hồ Sơ Cá Nhân</span>
