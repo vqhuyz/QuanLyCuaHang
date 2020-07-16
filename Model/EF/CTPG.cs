@@ -22,7 +22,7 @@ namespace Model.EF
         public int? SoLuong { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal? TongTien { get; set; }
+        public decimal? DonGia { get; set; }
 
         public virtual PhieuGiao PhieuGiao { get; set; }
 

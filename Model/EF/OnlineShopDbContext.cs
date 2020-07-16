@@ -42,7 +42,7 @@ namespace Model.EF
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CTDH>()
-                .Property(e => e.TongTien)
+                .Property(e => e.DonGia)
                 .IsFixedLength();
 
             modelBuilder.Entity<CTHD>()
@@ -50,12 +50,16 @@ namespace Model.EF
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<CTPG>()
-                .Property(e => e.TongTien)
+                .Property(e => e.DonGia)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<CTTH>()
-                .Property(e => e.TongTien)
+                .Property(e => e.DonGia)
                 .IsFixedLength();
+
+            modelBuilder.Entity<DatHang>()
+                .Property(e => e.TongTien)
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<DatHang>()
                 .HasMany(e => e.CTDHs)
@@ -109,6 +113,10 @@ namespace Model.EF
                 .WillCascadeOnDelete();
 
             modelBuilder.Entity<PhieuGiao>()
+                .Property(e => e.TongTien)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<PhieuGiao>()
                 .HasMany(e => e.CTPGs)
                 .WithRequired(e => e.PhieuGiao)
                 .WillCascadeOnDelete(false);
@@ -139,6 +147,10 @@ namespace Model.EF
                 .HasMany(e => e.CTTHs)
                 .WithRequired(e => e.SanPham)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TraHang>()
+                .Property(e => e.TongTien)
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<TraHang>()
                 .HasMany(e => e.CTTHs)

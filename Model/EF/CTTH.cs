@@ -22,7 +22,7 @@ namespace Model.EF
         public int? SoLuong { get; set; }
 
         [StringLength(10)]
-        public string TongTien { get; set; }
+        public string DonGia { get; set; }
 
         public virtual SanPham SanPham { get; set; }
 
