@@ -1,4 +1,4 @@
-﻿namespace Model.EF
+namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -12,33 +12,32 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NhaCungCap()
         {
-            SanPhams = new HashSet<SanPham>();
+            DatHangs = new HashSet<DatHang>();
+            LoaiSanPhams = new HashSet<LoaiSanPham>();
         }
 
         [Key]
         public long MaNCC { get; set; }
 
         [StringLength(200)]
-        [Display(Name = "Tên nhà cung cấp")]
         public string TenNCC { get; set; }
 
-        [Display(Name = "Số điện thoại")]
-        public int SoDT { get; set; }
+        public int? SoDT { get; set; }
 
-        [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }
 
         [StringLength(200)]
         public string Email { get; set; }
 
         [StringLength(10)]
-        [Display(Name = "Mã số thuế")]
         public string MaThue { get; set; }
 
-        [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SanPham> SanPhams { get; set; }
+        public virtual ICollection<DatHang> DatHangs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LoaiSanPham> LoaiSanPhams { get; set; }
     }
 }

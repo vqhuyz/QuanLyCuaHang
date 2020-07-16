@@ -28,7 +28,6 @@ namespace BanHang.Controllers
         {
             var dao = new DrownList();
             ViewBag.MaLoaiSP = new SelectList(dao.ListLoaiSP(), "MaLoaiSP", "TenLoai");
-            ViewBag.MaNCC = new SelectList(dao.ListNCC(), "MaNCC", "TenNCC");
             return View();
         }
 
@@ -45,7 +44,6 @@ namespace BanHang.Controllers
             var sanPham = new SanPhamDAO().ViewDetail(id);
             var dao = new DrownList();
             ViewBag.MaLoaiSP = new SelectList(dao.ListLoaiSP(), "MaLoaiSP", "TenLoai");
-            ViewBag.MaNCC = new SelectList(dao.ListNCC(), "MaNCC", "TenNCC");
             return View(sanPham);
         }
 

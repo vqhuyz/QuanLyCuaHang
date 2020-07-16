@@ -1,4 +1,4 @@
-﻿namespace Model.EF
+namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -18,8 +18,11 @@
         [Key]
         public long MaLoaiSP { get; set; }
 
-        [Display(Name = "Tên phân loại")]
         public string TenLoai { get; set; }
+
+        public long? MaNCC { get; set; }
+
+        public virtual NhaCungCap NhaCungCap { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SanPham> SanPhams { get; set; }

@@ -49,7 +49,6 @@ namespace Model.DAO
 
                 sanPham.TenSP = entity.TenSP;
                 sanPham.MaLoaiSP = entity.MaLoaiSP;
-                sanPham.MaNCC = entity.MaNCC;
                 sanPham.ThuongHieu = entity.ThuongHieu;
                 sanPham.GiaBan = entity.GiaBan;
                 sanPham.GiaNhap = entity.GiaNhap;

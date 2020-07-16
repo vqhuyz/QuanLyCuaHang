@@ -1,4 +1,4 @@
-﻿namespace Model.EF
+namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -19,26 +19,20 @@
         public long MaKH { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Tên khách hàng")]
         public string TenKH { get; set; }
 
         [StringLength(20)]
-        [Display(Name = "Số chứng minh")]
         public string SoCMND { get; set; }
 
-        [Display(Name = "Số điện thoại")]
-        public int SoDT { get; set; }
+        public int? SoDT { get; set; }
 
         [Column(TypeName = "date")]
-        [Display(Name = "Ngày sinh")]
         public DateTime NgaySinh { get; set; }
 
         [StringLength(200)]
-        [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }
 
         [StringLength(10)]
-        [Display(Name = "Giới tính")]
         public string GioiTinh { get; set; }
 
         [StringLength(200)]
@@ -47,10 +41,8 @@
         [StringLength(200)]
         public string Facebook { get; set; }
 
-        [Display(Name = "Ngày đăng kí")]
         public DateTime? NgayDangKi { get; set; }
 
-        [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

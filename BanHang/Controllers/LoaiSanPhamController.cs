@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using BanHang.Common;
+using BanHang.Models;
 
 namespace BanHang.Controllers
 {
@@ -24,6 +25,8 @@ namespace BanHang.Controllers
         [HttpGet]
         public ActionResult ThemMoi()
         {
+            var dao = new DrownList();
+            ViewBag.MaNCC = new SelectList(dao.ListNCC(), "MaNCC", "TenNCC");
             return PartialView();
         }
 

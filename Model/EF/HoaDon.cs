@@ -13,6 +13,7 @@ namespace Model.EF
         public HoaDon()
         {
             CTHDs = new HashSet<CTHD>();
+            TraHangs = new HashSet<TraHang>();
         }
 
         [Key]
@@ -29,11 +30,18 @@ namespace Model.EF
 
         public long? MaKH { get; set; }
 
+        public double? VAT { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }
 
         public virtual KhachHang KhachHang { get; set; }
 
         public virtual NhanVien NhanVien { get; set; }
+
+        public virtual VAT VAT1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TraHang> TraHangs { get; set; }
     }
 }

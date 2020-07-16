@@ -13,15 +13,22 @@ namespace Model.EF
         }
 
         public virtual DbSet<ChucNang> ChucNangs { get; set; }
+        public virtual DbSet<CTDH> CTDHs { get; set; }
         public virtual DbSet<CTHD> CTHDs { get; set; }
+        public virtual DbSet<CTPG> CTPGs { get; set; }
+        public virtual DbSet<CTTH> CTTHs { get; set; }
+        public virtual DbSet<DatHang> DatHangs { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
         public virtual DbSet<NhaCungCap> NhaCungCaps { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
+        public virtual DbSet<PhieuGiao> PhieuGiaos { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
+        public virtual DbSet<TraHang> TraHangs { get; set; }
         public virtual DbSet<VaiTro> VaiTroes { get; set; }
         public virtual DbSet<VaiTro_ChucNang> VaiTro_ChucNang { get; set; }
+        public virtual DbSet<VAT> VATs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,9 +41,26 @@ namespace Model.EF
                 .WithRequired(e => e.ChucNang)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<CTDH>()
+                .Property(e => e.TongTien)
+                .IsFixedLength();
+
             modelBuilder.Entity<CTHD>()
                 .Property(e => e.GiaBan)
                 .HasPrecision(19, 4);
+
+            modelBuilder.Entity<CTPG>()
+                .Property(e => e.TongTien)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<CTTH>()
+                .Property(e => e.TongTien)
+                .IsFixedLength();
+
+            modelBuilder.Entity<DatHang>()
+                .HasMany(e => e.CTDHs)
+                .WithRequired(e => e.DatHang)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<HoaDon>()
                 .Property(e => e.TongTien)
@@ -46,7 +70,6 @@ namespace Model.EF
                 .Property(e => e.SoCMND)
                 .IsFixedLength()
                 .IsUnicode(false);
-
 
             modelBuilder.Entity<KhachHang>()
                 .HasMany(e => e.HoaDons)
@@ -62,11 +85,6 @@ namespace Model.EF
                 .Property(e => e.MaThue)
                 .IsFixedLength()
                 .IsUnicode(false);
-
-            modelBuilder.Entity<NhaCungCap>()
-                .HasMany(e => e.SanPhams)
-                .WithOptional(e => e.NhaCungCap)
-                .WillCascadeOnDelete();
 
             modelBuilder.Entity<NhanVien>()
                 .Property(e => e.SoCMND)
@@ -90,6 +108,11 @@ namespace Model.EF
                 .WithOptional(e => e.NhanVien)
                 .WillCascadeOnDelete();
 
+            modelBuilder.Entity<PhieuGiao>()
+                .HasMany(e => e.CTPGs)
+                .WithRequired(e => e.PhieuGiao)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<SanPham>()
                 .Property(e => e.GiaNhap)
                 .HasPrecision(19, 4);
@@ -101,6 +124,26 @@ namespace Model.EF
             modelBuilder.Entity<SanPham>()
                 .Property(e => e.GiaMoi)
                 .HasPrecision(19, 4);
+
+            modelBuilder.Entity<SanPham>()
+                .HasMany(e => e.CTDHs)
+                .WithRequired(e => e.SanPham)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SanPham>()
+                .HasMany(e => e.CTPGs)
+                .WithRequired(e => e.SanPham)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SanPham>()
+                .HasMany(e => e.CTTHs)
+                .WithRequired(e => e.SanPham)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TraHang>()
+                .HasMany(e => e.CTTHs)
+                .WithRequired(e => e.TraHang)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<VaiTro>()
                 .Property(e => e.MaVaiTro)
@@ -118,6 +161,11 @@ namespace Model.EF
             modelBuilder.Entity<VaiTro_ChucNang>()
                 .Property(e => e.MaChucNang)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<VAT>()
+                .HasMany(e => e.HoaDons)
+                .WithOptional(e => e.VAT1)
+                .HasForeignKey(e => e.VAT);
         }
     }
 }

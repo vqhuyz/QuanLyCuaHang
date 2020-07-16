@@ -70,16 +70,23 @@
     <Compile Include="DAO\SanPhamDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="EF\ChucNang.cs" />
+    <Compile Include="EF\CTDH.cs" />
     <Compile Include="EF\CTHD.cs" />
+    <Compile Include="EF\CTPG.cs" />
+    <Compile Include="EF\CTTH.cs" />
+    <Compile Include="EF\DatHang.cs" />
     <Compile Include="EF\HoaDon.cs" />
     <Compile Include="EF\KhachHang.cs" />
     <Compile Include="EF\LoaiSanPham.cs" />
     <Compile Include="EF\NhaCungCap.cs" />
     <Compile Include="EF\NhanVien.cs" />
     <Compile Include="EF\OnlineShopDbContext.cs" />
+    <Compile Include="EF\PhieuGiao.cs" />
     <Compile Include="EF\SanPham.cs" />
+    <Compile Include="EF\TraHang.cs" />
     <Compile Include="EF\VaiTro.cs" />
     <Compile Include="EF\VaiTro_ChucNang.cs" />
+    <Compile Include="EF\VAT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
